@@ -9,45 +9,45 @@ This article contains some advice for investigating or solving issues with a Rep
 
 ## Using a Custom Schema
 
-**Snapshot Tasks** that have been set up, or imported, with a custom schema name can be used for "full backup" replication tasks. Incremental replication tasks will not work.
+**Snapshot Tasks** that set up or imported, with a custom schema name can be used for full back up replication tasks. Incremental replication tasks do not work.
 
-There are several ways that a custom schema can be created:
-* A ZFS dataset with snapshots has been imported into TrueNAS with a schema that doesn't match the Truenas schema.
-* A custom schema name has been created in the **Snapshot Task**. This occurs when the *Naming Schema* field in a **Periodic Snapshot Task** is used and the name of the schema is something other than the default.
+There are several ways to create a custom schema:
+* Import a ZFS dataset with snapshots into TrueNAS with a schema that doesn't match the Truenas schema.
+* Create a custom schema name in the **Snapshot Task**. This occurs when using a value entered in the **Naming Schema** on the **Periodic Snapshot Task** screen and the name of the schema is something other than the default.
 
 ## Replication Task Log
 
 To view and download the replication task log, go to **Tasks > Replication Tasks**.
-Click on the *state* of the replication task.
+Click on the **state** of the replication task.
 
 ![TasksReplicationTasksState](/images/CORE/12.0/RepTaskErrorCORE.png "Replication Task State")
 
 ![TasksReplicationTasksLog](/images/CORE/12.0/RepTaskLogDownloadCORE.png "Replication Task Log")
 
-Click the *DOWNLOAD LOGS* button to download the log file.
+Click the **DOWNLOAD LOGS** button to download the log file.
 
 ## Editing a Replication Task
 
 To edit the replication task, go to **Tasks > Replication Tasks**.
-Click the `>` to expand the replication task information, then click **EDIT**.
+Click the <span class="material-icons">chevron_right</span> to expand the replication task information, then click **EDIT**.
 
 ![TasksReplicationTasksEdit](/images/CORE/12.0/RepEditTaskCORE.png "Replication Task Edit")
 
-See [**Replication Advanced Options**]({{< relref "CORE/CORETutorials/Tasks/ReplicationTasks/Advanced.md" >}}) for descriptions of the available fields.
+See [**Replication Advanced Options**]({{< relref "/CORE/CORETutorials/Tasks/ReplicationTasks/Advanced.md" >}}) for descriptions of the available fields.
 
 ## Replication Task Alert Priorities
 
-To customize the importance and frequency of a Replication task alert (success or failure), go to **System > Alert Settings** and scroll down to the *Tasks* area.
-Set the *Warning Level* and how often the alert notification is sent.
+To customize the importance and frequency of a replication task alert (success or failure), go to **System > Alert Settings** and scroll down to the **Tasks** area.
+Set the **Warning Level** and how often to send the alert notification.
 
 ![TasksSetReplicationAlert](/images/CORE/12.0/AlertTaskReplication.png "Set Replication Alert")
 
-See [**Alert Settings**]({{< relref "CORE/UIReference/System/AlertSettings.md" >}}) for more information about this UI screen.
+See [**Alert Settings**]({{< relref "/CORE/UIReference/System/AlertSettings.md" >}}) for more information about this UI screen.
 
 ## FAQ
 
-**Question**: If the internet connection goes down for a period of time, will the replication restart where it left off - including any intermediate snapshots?
+**Question**: If the internet connection goes down for a period of time, does the replication restart where it left off - including any intermediate snapshots?
 **Answer**: Yes.
 
-**Question**: If a site changes a lot of data at one time and the internet bandwidth is not enough to finish sending the snapshot before the next one begins, will the replication jobs run one after the other and not stomp on each other?
+**Question**: If a site changes a lot of data at one time and the internet bandwidth is not enough to finish sending the snapshot before the next one begins, do the replication jobs run one after the other and not stomp on each other?
 **Answer**: Yes.
