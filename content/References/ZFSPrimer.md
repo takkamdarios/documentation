@@ -193,3 +193,11 @@ Feature flags are used to tag features with unique names to provide portability 
 TrueNAS uses OpenZFS and each new version of TrueNAS keeps up-to-date with the latest feature flags and OpenZFS bug fixes.
 
 See [zpool-features(7)](https://www.freebsd.org/cgi/man.cgi?query=zpool-features) for a complete listing of all OpenZFS feature flags available on FreeBSD.
+
+## ZFS Conference Talks by iXsystems Engineers
+
++ [SDC 2018 - Real-world Performance Advantages of NVDIMM and NVMe: A Case Study with OpenZFS](https://www.youtube.com/watch?v=5rdK8p4VzAU)
+ - Presented by Nick Principe, Technical Marketing Engineer at iXsystems
+
++ [SDC 2020 - Array Level Steady State Detection for ZFS Storage Servers](https://www.youtube.com/watch?v=os_9F66E_hc) - Presented by
+Ryan McKenzie, Senior Platform and Performance Engineer at iXsystems
