@@ -13,22 +13,22 @@ tags:
 
 ## Using Encryption in Replication Tasks
 
-TrueNAS SCALE replication allows users to create replicated snapshots of data stored in encrypted pools, datasets or zvols that on their SCALE system as a way to back up stored data to a remote system. You can use encrypted datasets in a local replication.
+TrueNAS SCALE replication allows users to create replicated snapshots of data stored in encrypted pools, datasets, or zvols that on their SCALE system as a way to back up stored data to a remote system. You can use encrypted datasets in a local replication.
 
 {{< hint warning >}}
-You can set up a replication task for a dataset encrypted with a passphrase or a hex encryption key, but you must unlock the dataset before the task runs or the task fails.
+You can set up a replication task for a dataset encrypted with a passphrase or a hex encryption key, but you must unlock the dataset before running the task, or it fails.
 {{< /hint>}}
 
-With the implementation of rootless login and the admin user, when setting up remote replication tasks when logged in as an admin user requires selecting **Use Sudo For ZFS Commands**. 
+With the implementation of rootless login and the admin user, setting up remote replication tasks when logged in as an admin user requires selecting **Use Sudo For ZFS Commands**. 
 
 {{< include file="/content/_includes/ReplicationIntroSCALE.md" type="page" >}}
 
-Remote replication with datasets also require an SSH connection in TrueNAS. You can use an existing SSH connection if it has the same user credentials you want to use for the new replication task. 
+Remote replication with datasets also requires an SSH connection in TrueNAS. You can use an existing SSH connection if it has the same user credentials you want to use for the new replication task. 
 
 ## Setting Up a Simple Replication Task Overview 
 
 This section provides a simple overview of setting up a remote replication task for an encrypted dataset. 
-It also covers the related steps you should take prior to configuring the replication task. 
+It also covers the related steps you should take before to configuring the replication task. 
 
 {{< expand "Replication Task General Overview" "v" >}}
 
@@ -54,18 +54,18 @@ This completes the general process for all replication tasks.
 
 ## Creating a Remote Replication Task for an Encrypted Dataset
 
-To streamline creating simple replication tasks use the **Replication Task Wizard** to create and copy ZFS snapshots to another system. 
-The wizard assists with creating a new SSH connection and automatically creates a periodic snapshot task for sources that have no existing snapshots.
+To streamline creating simple replication tasks, use the **Replication Task Wizard** to create and copy ZFS snapshots to another system. 
+The wizard assists with creating a new SSH connection and automatically creates a periodic snapshot task for sources with no existing snapshots.
 
-If you have an existing replication task, you can select it on the **Load Previous Replication Task** dropdown list to load the configuration settings for that task into the wizard, and then make change such as assigning it a different destination, select encryption options, schedule, or retention lifetime, etc. 
+If you have an existing replication task, you can select it on the **Load Previous Replication Task** dropdown list to load the configuration settings for that task into the wizard, and then make changes such as assigning it a different destination, selecting encryption options, schedule, or retention lifetime, etc. 
 Saving changes to the configuration creates a new replication task without altering the task you loaded into the wizard.
 This saves some time when creating multiple replication tasks between the same two systems.
 
 {{< include file="/content/_includes/ReplicationCreateDatasetAndAdminHomeDirSteps.md" type="page" >}}
 
-3. Unlock the source dataset and export the encryption key to a text editor such as Notepad.
-   Go to **Datasets** select the source dataset, locate the **ZFS Encryption** widget and unlock the dataset if locked. 
-   Export the key and paste it in any text editor such as Notepad. If you set up encryption to use a passphrase, you do not need to export a key.
+3. Unlock the source dataset and export the encryption key to a text editor like Notepad.
+   Go to **Datasets**, select the source dataset, locate the **ZFS Encryption** widget, and unlock the dataset if locked. 
+   Export the key, then paste it in any text editor, like Notepad. You do not need to export a key if you set up encryption to use a passphrase.
 
 4. Go to **Data Protection** and click **Add** on the **Replication Tasks** widget to open the **Replication Task Wizard**. Configure the following settings:
    

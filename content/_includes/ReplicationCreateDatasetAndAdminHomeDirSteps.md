@@ -11,7 +11,7 @@ To create a replication task:
    If using another TrueNAS SCALE system, [create a dataset]({{< relref "DatasetsSCALE.md" >}}) in one of your pools.
   
 2. Verify the admin user home directory setting. 
-   Go to **Credentials > Local User**, click anywhere on the **admin** user row to expand it. 
+   Go to **Credentials > Local User**, click anywhere on the **admin** user row to expand it, and click **Edit**. 
    Scroll down to the **Home Directory** setting. If it is set to **/home/admin**, select **Create Home Directory**, then Click **Save**.
 
    In the early release of Bluefin, the admin user created does not point to **/home/admin/** in the **Home Directory** field. 

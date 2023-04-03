@@ -11,7 +11,7 @@ To configure a new SSH connection in the **Replication Task Wizard**:
 
 3. Select the **Setup Method** from the dropdown list. If a TrueNAS system, select **Semi-Automatic**.
 
-4. Enter the URL to the remote TrueNAS in **TrueNAS URL**.   
+4. Enter the URL to the remote TrueNAS in **TrueNAS URL**. Include the full URL, entering the IP address does not work.  
 
    ![NewSSHConnectionAuthetication](/images/SCALE/22.12/NewSSHConnectionAuthetication.png "New SSH Connection Authentication")
 
