@@ -1,6 +1,7 @@
 ---
 title: "Documentation Hub"
 geekdocCollapseSection: true
+geekdocNav: false
 ---
 
 TrueNAS is the world's most popular Open Source storage operating system and is the most efficient solution for managing and sharing data over a network.
@@ -25,46 +26,4 @@ When combined with our high-availability hardware and [**TrueCommand**]({{< relr
 ![](/favicon/iXfavicon-32x32.png) [**TrueNAS Hardware**]({{< relref "/Hardware/_index.md" >}})
 {{< /columns >}}
 
-## Version Documentation
-
-The Documentation Hub has all of the information you need to set up and manage your TrueNAS system.
-Documentation articles follow the latest supported software releases, with previous version documentation available in the [Docs Archive]({{< relref "Archive.md" >}}):
-
-{{< truetable >}}
-| Software | Current Documented Version | Previous Major Version |
-|----------|----------------------------|------------------------|
-| TrueNAS CORE | 13.0 | [12.0](https://www.truenas.com/docs/files/CORE12.0Docs.pdf) ([Release Notes]({{< relref "Archive.md#truenas-core" >}})) |
-| TrueNAS SCALE | 22.12 Bluefin | [22.02 Angelfish](https://www.truenas.com/docs/files/SCALE22.02Docs.pdf) |
-| TrueCommand | 2.3 | [2.1](https://www.truenas.com/docs/files/TC2.1Docs.pdf)  |
-{{< /truetable >}}
-
 ## Site Navigation
-
-The navigation pane to the left is sorted in to expandable sections and subsections. These are the major documentation sections:
-
-* **[TrueNAS CORE]({{< relref "/core/_index.md" >}})** has tutorial and reference content to assist you with installing and configuring this FreeBSD-based software.
-
-* **[TrueNAS SCALE]({{< relref "/scale/_index.md" >}})** contains content specific to the Linux-based software.
-  This includes **Getting Started Guides** for both Community and Enterprise deployments, **Configuration Tutorials**, and reference documentation for the **UI**, SCALE **CLI**, and **API**.
-
-* **[TrueNAS Upgrades]({{< relref "/truenasupgrades/_index.md" >}})** documents current upgrade information for both CORE and SCALE, including the active update trains and developer images for upcoming versions.
-
-* **[Solutions]({{< relref "/solutions/_index.md" >}})** provides version-agnostic background information and tutorials about general system use cases or integrations with other vendor solutions.
-
-* **[TrueCommand]({{< relref "/truecommand/_index.md" >}})** contains content specific to the latest support release of TrueCommand.
-  This includes installation instructions, reference information about each section of the TrueCommand web interface, and tutorials for specific use-cases.
-
-* **[TrueNAS Systems]({{< relref "/hardware/_index.md" >}})** has content specific to the various hardware platforms that iXsystems builds and sells specifically for use with TrueNAS.
-
-* **[Contributing]({{< relref "/contributing/_index.md" >}})** provides guidance for those seeking to contribute to the open-source projects.
-
-* **[References]({{< relref "/references/_index.md" >}})** provides general background knowledge about concepts and terms and some of the underlying technologies that are used in TrueNAS.
-
-The **More** menu in the lower-left side of the screen has links to security notices, archived documentation, and the GitHub source repository for this website.
-An RSS feed is also available here.
-
-You can also use the search bar above the navigation pane if you know specific keywords for what you're looking for.
-
-Contributors welcome! Anyone can contribute new content or feedback about the Documentation Hub and TrueNAS by [**Reporting Issues**]({{< relref "/Contributing/IssueReporting/_index.md" >}}) or suggesting [**updates**]({{< relref "ContentUpdate.md" >}}) and [**new articles**]({{< relref "/Contributing/Documentation/NewArticles/_index.md" >}}).  
-
-Can't find what you're looking for? Just want to be part of the TrueNAS community? Join our [**Community Forums**](https://www.truenas.com/community/) or the [**TrueNAS subreddit**](https://www.reddit.com/r/truenas/).

@@ -1,5 +1,5 @@
 /* Font Changes */
-p,h1,h2,h3,h4,th,td,a {
+p,h1,h2,h3,h4,th,td,a,body {
   font-family: "Inter", sans-serif;
 }
 /* Adjust overall site height */
@@ -7,7 +7,17 @@ p,h1,h2,h3,h4,th,td,a {
     display: flex;
     flex-direction: column;
 }
-
+/* Adjust site width */
+.container {
+	max-width: 90rem;
+	padding: 0;
+}
+.gdoc-page {
+    max-width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem 1rem 0rem 0rem;
+}
 /* Site header */
 .gdoc-brand__img {
     max-width: 7em;
@@ -76,13 +86,6 @@ p,h1,h2,h3,h4,th,td,a {
 /* Fix Nav sidebar padding */
 .gdoc-nav, .nav {
     padding: 1rem 1.5rem 1rem 1rem;
-}
-.gdoc-page {
-    padding: 1rem 1rem 0rem 0rem;
-}
-.container{
-    max-width: 100rem;
-    padding: 0;
 }
 .gdoc-header {
     background: #000000;
