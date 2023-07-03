@@ -1,0 +1,95 @@
+<div class="stickyelement" id="stickymenu">
+	<div class="stickybackground">
+		<div class="container" style="display:flex;flex-wrap:wrap;padding-top:.5rem;justify-content:center;align-items:center;">
+			<span class="docshome"><a href="/">TrueNAS Documentation</a></span>
+			<form action="https://www.google.com/search" method="get" style="float:right;">
+				<input type="text" name="q" placeholder="Search..." />
+				<input type="submit" value="Search" />
+			</form>
+			<div class="truenas-menubar" style="float:right;">
+				<div class="truenas-menuitem">
+					<button class="truenas-menubutton" id="productButton">Product <i class="fa fa-angle-down"></i></button>
+					<div class="truenas-menudropdown" id="productDropdown">
+						<div class="dropdown-item" onclick="selectProduct('TrueNAS CORE')">TrueNAS CORE</div>
+						<div class="dropdown-item" onclick="selectProduct('TrueNAS SCALE')">TrueNAS SCALE</div>
+						<div class="dropdown-item" onclick="selectProduct('TrueCommand')">TrueCommand</div>
+						<div class="dropdown-item" onclick="selectProduct('TrueNAS Systems')">TrueNAS Systems</div>
+					</div>
+				</div>
+				<div class="truenas-menuitem" onmouseover="showVersionOptions()" onmouseout="hideVersionOptions()">
+					<button class="truenas-menubutton" id="versionButton">Version <i class="fa fa-angle-down"></i></button>
+					<div class="truenas-menudropdown" id="versionDropdown">
+					<!-- Version dropdown options dynamically load -->
+					</div>
+			    </div>
+			    <span id="gdoc-color-theme"style="padding-right:5px">
+				  <svg class="gdoc-icon gdoc_brightness_dark">
+				  <title>{{ i18n "button_toggle_dark" }}</title>
+				  <use xlink:href="#gdoc_brightness_dark"></use>
+				  </svg>
+				  <svg class="gdoc-icon gdoc_brightness_light">
+				  <title>{{ i18n "button_toggle_dark" }}</title>
+				  <use xlink:href="#gdoc_brightness_light"></use>
+				  </svg>
+				  <svg class="gdoc-icon gdoc_brightness_auto">
+				  <title>{{ i18n "button_toggle_dark" }}</title>
+				  <use xlink:href="#gdoc_brightness_auto"></use>
+				  </svg>
+			    </span>
+				<div id="google_translate_element"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+function selectProduct(product) {
+  document.getElementById('productButton').textContent = product;
+  document.getElementById('versionDropdown').innerHTML = '';
+
+  if (product === 'TrueNAS CORE') {
+    document.getElementById('versionDropdown').innerHTML = `
+      <div class="dropdown-item" onclick="selectVersion('13.0')">13.0</div>
+      <div class="dropdown-item" onclick="selectVersion('12.0')">12.0</div>
+      <div class="dropdown-item" onclick="selectVersion('11.3')">11.3</div>
+    `;
+  } else if (product === 'TrueNAS SCALE') {
+    document.getElementById('versionDropdown').innerHTML = `
+      <div class="dropdown-item" onclick="selectVersion('23.10')">23.10</div>
+      <div class="dropdown-item" onclick="selectVersion('22.12')">22.12</div>
+      <div class="dropdown-item" onclick="selectVersion('22.02')">22.02</div>
+    `;
+  } else if (product === 'TrueCommand') {
+    document.getElementById('versionDropdown').innerHTML = `
+      <div class="dropdown-item" onclick="selectVersion('3.0')">3.0</div>
+      <div class="dropdown-item" onclick="selectVersion('2.0')">2.0</div>
+      <div class="dropdown-item" onclick="selectVersion('1.0')">1.0</div>
+    `;
+  } else if (product === 'TrueNAS Systems') {
+    document.getElementById('versionDropdown').innerHTML = `
+      <div class="dropdown-item" onclick="selectVersion('2.0')">A</div>
+      <div class="dropdown-item" onclick="selectVersion('1.5')">B</div>
+    `;
+  }
+}
+
+var versionDropdownVisible = false;
+
+function showVersionOptions() {
+  if (!versionDropdownVisible) {
+    document.getElementById('versionDropdown').style.display = 'block';
+    versionDropdownVisible = true;
+  }
+}
+
+function hideVersionOptions() {
+  if (versionDropdownVisible) {
+    document.getElementById('versionDropdown').style.display = 'none';
+    versionDropdownVisible = false;
+  }
+}
+
+function selectVersion(version) {
+  document.getElementById('versionButton').textContent = version;
+  hideVersionOptions();
+}
+</script>

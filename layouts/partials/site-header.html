@@ -1,6 +1,6 @@
 <header class="gdoc-header" id="TrueNASHeader">
 	<div class="container iconsbar">
-		<a href="https://www.ixsystems.com/" targe="_blank" title="TrueNAS by iXsystems"><img class="ubermenu-image ubermenu-image-size-full" src='/favicon/iXfavicon-32x32.png' width="24" height="24" style="float:left">
+		<a href="https://www.ixsystems.com/" targe="_blank" title="iXsystems"><img class="ubermenu-image ubermenu-image-size-full" src='/ixsystems_logo_130_30.svg' width="auto" height="20px" style="float:left">
         <a href="tel:4089434100" title="iXsystems Sales Phoneline">Get a Quote &nbsp;&nbsp;<i class="ubermenu-icon fas fa-phone" title="Phone"></i>&nbsp;&nbsp;(408) 943-4100</a>&nbsp;&nbsp;
         <a href="https://www.facebook.com/truenascommunity" target="_blank" title="TrueNAS Community (Facebook)"style="padding-right:.5rem"><i class="ubermenu-icon fab fa-facebook" title="Facebook"></i></a>
         <a href="https://twitter.com/TrueNAS" target="_blank" title="TrueNAS Twitter"style="padding-right:.5rem"><i class="ubermenu-icon fab fa-twitter" title="Twitter"></i></a>
@@ -10,20 +10,6 @@
         <a href="https://www.github.com/truenas/" target="_blank" title="TrueNAS GitHub"style="padding-right:.5rem"><i class="ubermenu-icon fab fa-github" title="TrueNAS GitHub"></i></a>
         <a href="https://www.vendop.com/vendor/ixsystems-inc/reviews/" target="_blank" title="iXsystems VendOp Reviews"style="padding-right:.5rem"><img class="ubermenu-image ubermenu-image-size-full" src='/favicon/VendOp_Icon_15x15px.png' width="15" height="15" alt="VendOp_Icon_15x15px"></a>
         <a href="https://www.truenas.com/commercial-support/" target="_blank" title="iXsystems TrueNAS Enterprise Support">Commercial Support</a>
-		<span id="gdoc-color-theme">
-          <svg class="gdoc-icon gdoc_brightness_dark">
-            <title>{{ i18n "button_toggle_dark" }}</title>
-            <use xlink:href="#gdoc_brightness_dark"></use>
-          </svg>
-          <svg class="gdoc-icon gdoc_brightness_light">
-            <title>{{ i18n "button_toggle_dark" }}</title>
-            <use xlink:href="#gdoc_brightness_light"></use>
-          </svg>
-          <svg class="gdoc-icon gdoc_brightness_auto">
-            <title>{{ i18n "button_toggle_dark" }}</title>
-            <use xlink:href="#gdoc_brightness_auto"></use>
-          </svg>
-        </span>
 	</div>
 	
 	
@@ -53,9 +39,7 @@
             </div>
         </div>
     {{ end }}
-		<div class="stickyelement" id="stickymenu">
-		  <div class="stickybackground">
-		    <div class="container">
+	    <div class="container truerow">
 			<a class="gdoc-brand gdoc-header__link" href="https://www.truenas.com">
 				<span class="flex align-center">
 				<img class="gdoc-brand__img" style="display:flex;float:left" src="{{ (default "brand.svg" .Root.Site.Params.GeekdocLogo) | relURL }}" alt=""/>
@@ -156,9 +140,9 @@
                     </div>
                 </div>
 			</div>
-            </div>
-		  </div>
 		</div>
+		{{ partial "docs-nav" }}
+		
     <div class="gdoc-menu-header">
       <span class="gdoc-menu-header__items">
         {{ if .Root.Site.Data.menu.extra.header }}
@@ -206,6 +190,13 @@ function myFunction() {
   } else {
     navbar.classList.remove("sticky");
   }
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'},
+'google_translate_element');
 }
 </script>
 <!-- End sticky main_navbar -->

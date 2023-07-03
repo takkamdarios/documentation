@@ -38,7 +38,21 @@ p,h1,h2,h3,h4,th,td,a,body {
 .iconsbar a {
     color: #fff;
 }
-
+/* Site Nav Bar */
+.docshome {
+  flex: 1;
+  float: left;
+}
+.docshome a,
+.docshome a:visited {
+  color: #23afe4;
+  font-size: xx-large;
+  font-weight: 600;
+}
+.docshome a:hover {
+  text-decoration: none;
+}
+/* End Site Nav Bar */
 /* Sticky top menu */
 .sticky {
     position: fixed;
@@ -55,6 +69,9 @@ p,h1,h2,h3,h4,th,td,a,body {
 }
 .stickyelement {
     background: black;
+}
+.truerow {
+	display: block;
 }
 .stickybackground {
 	z-index: 1;
@@ -89,9 +106,8 @@ p,h1,h2,h3,h4,th,td,a,body {
 }
 .gdoc-header {
     background: #000000;
-	border-bottom-width: 20px;
-	border-bottom-color: #0095d5;
     padding: .5rem 1rem 1rem 1rem;
+	border-bottom-width: 0px;
 }
 
 .truenas-menuitem {
@@ -132,6 +148,9 @@ p,h1,h2,h3,h4,th,td,a,body {
     padding: 12px 16px;
     text-decoration: none;
     display: table;
+}
+.dropdown-item {
+  cursor: pointer;
 }
 .linkscolumn {
 	width: 50%;
