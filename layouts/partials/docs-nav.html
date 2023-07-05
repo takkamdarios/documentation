@@ -17,7 +17,7 @@
 					</div>
 				</div>
 				<div class="truenas-menuitem" onmouseover="showVersionOptions()" onmouseout="hideVersionOptions()">
-					<button class="truenas-menubutton" id="versionButton">Version <i class="fa fa-angle-down"></i></button>
+					<button class="truenas-menubutton" id="versionButton" disabled>Product Version <i class="fa fa-angle-down"></i></button>
 					<div class="truenas-menudropdown" id="versionDropdown">
 					<!-- Version dropdown options dynamically load -->
 					</div>
@@ -44,11 +44,12 @@
 <script>
 function selectProduct(product) {
   document.getElementById('productButton').textContent = product;
+  document.getElementById('versionButton').removeAttribute('disabled');
   document.getElementById('versionDropdown').innerHTML = '';
 
   if (product === 'TrueNAS CORE') {
     document.getElementById('versionDropdown').innerHTML = `
-      <div class="dropdown-item" onclick="selectVersion('13.0')">13.0</div>
+      <div class="dropdown-item"><a href="/core">13.0</a></div>
       <div class="dropdown-item" onclick="selectVersion('12.0')">12.0</div>
       <div class="dropdown-item" onclick="selectVersion('11.3')">11.3</div>
     `;
@@ -91,5 +92,12 @@ function hideVersionOptions() {
 function selectVersion(version) {
   document.getElementById('versionButton').textContent = version;
   hideVersionOptions();
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'},
+'google_translate_element');
 }
 </script>

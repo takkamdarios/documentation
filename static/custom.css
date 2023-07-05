@@ -52,6 +52,10 @@ p,h1,h2,h3,h4,th,td,a,body {
 .docshome a:hover {
   text-decoration: none;
 }
+.truenas-menubutton[disabled] {
+	color: rgba(128, 128, 128, 0.5);
+	pointer-events: none;
+}
 /* End Site Nav Bar */
 /* Sticky top menu */
 .sticky {
@@ -151,7 +155,15 @@ p,h1,h2,h3,h4,th,td,a,body {
 }
 .dropdown-item {
   cursor: pointer;
+  font-family: "din-2014";
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: table;
 }
+
 .linkscolumn {
 	width: 50%;
 	float: left;
