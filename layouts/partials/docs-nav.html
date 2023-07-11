@@ -18,7 +18,7 @@
 				</div>
 				<div class="truenas-menuitem" onmouseover="showVersionOptions()" onmouseout="hideVersionOptions()">
 					<button class="truenas-menubutton" id="versionButton" disabled>Product Version <i class="fa fa-angle-down"></i></button>
-					<div class="truenas-menudropdown" id="versionDropdown">
+					<div class="truenas-navmenudropdown" id="versionDropdown">
 					<!-- Version dropdown options dynamically load -->
 					</div>
 			    </div>
@@ -49,26 +49,31 @@ function selectProduct(product) {
 
   if (product === 'TrueNAS CORE') {
     document.getElementById('versionDropdown').innerHTML = `
-      <div class="dropdown-item"><a href="/core">13.0</a></div>
-      <div class="dropdown-item" onclick="selectVersion('12.0')">12.0</div>
-      <div class="dropdown-item" onclick="selectVersion('11.3')">11.3</div>
+	  <div class="dropdown-item"><a href="/core/latest/">Latest Stable</a></div>
+      <div class="dropdown-item"><a href="/core/13/">13.0</a></div>
+	  <div class="dropdown-item"><a href="/archive/">Archive</a></div>
     `;
   } else if (product === 'TrueNAS SCALE') {
     document.getElementById('versionDropdown').innerHTML = `
-      <div class="dropdown-item" onclick="selectVersion('23.10')">23.10</div>
-      <div class="dropdown-item" onclick="selectVersion('22.12')">22.12</div>
-      <div class="dropdown-item" onclick="selectVersion('22.02')">22.02</div>
+      <div class="dropdown-item"><a href="/scale/latest/">Latest Stable</a></div>
+	  <div class="dropdown-item"><a href="/scale/2310/">23.10</a></div>
+	  <div class="dropdown-item"><a href="/scale/2212/">22.12</a></div>
+	  <div class="dropdown-item"><a href="/scale/2202/">22.02</a></div>
+	  <div class="dropdown-item"><a href="/archive/">Archive</a></div>
     `;
   } else if (product === 'TrueCommand') {
     document.getElementById('versionDropdown').innerHTML = `
-      <div class="dropdown-item" onclick="selectVersion('3.0')">3.0</div>
-      <div class="dropdown-item" onclick="selectVersion('2.0')">2.0</div>
-      <div class="dropdown-item" onclick="selectVersion('1.0')">1.0</div>
+      <div class="dropdown-item"><a href="/truecommand/latest/">Latest Stable</a></div>
+	  <div class="dropdown-item"><a href="/truecommand/2/">2</a></div>
+      <div class="dropdown-item"><a href="/truecommand/1/">1</a></div>
+	  <div class="dropdown-item"><a href="/archive/">Archive</a></div>
     `;
   } else if (product === 'TrueNAS Systems') {
     document.getElementById('versionDropdown').innerHTML = `
-      <div class="dropdown-item" onclick="selectVersion('2.0')">A</div>
-      <div class="dropdown-item" onclick="selectVersion('1.5')">B</div>
+      <div class="dropdown-item"><a href="/hardware/">Systems Overview</a></div>
+      <div class="dropdown-item"><a href="/hardware/">Visio Stencils</a></div>
+	  <div class="dropdown-item"><a href="/hardware/">Notices</a></div>
+	  <div class="dropdown-item"><a href="/hardware/">Legacy Systems</a></div>
     `;
   }
 }

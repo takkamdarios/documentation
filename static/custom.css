@@ -56,6 +56,21 @@ p,h1,h2,h3,h4,th,td,a,body {
 	color: rgba(128, 128, 128, 0.5);
 	pointer-events: none;
 }
+.truenas-navmenudropdown {
+    display: none;
+    position: absolute;
+    background-color: #0095d5;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+.truenas-navmenudropdown a {
+    font-family: "din-2014";
+	font-size: 16px;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    display: table;
+}
 /* End Site Nav Bar */
 /* Sticky top menu */
 .sticky {
@@ -657,3 +672,61 @@ p,h1,h2,h3,h4,th,td,a,body {
 
 }
 /* End Dark Mode adjustments */
+/* Docs Products Nav Boxes */
+.security-sections {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 2rem;
+  padding: 1rem;
+}
+@media screen and (max-width:50rem) {
+	.security-sections {
+		grid-template-columns: auto auto;
+	}
+}
+@media screen and (max-width:25rem) {
+	.security-sections {
+		grid-template-columns: auto;
+	}
+}
+.security-sections > p {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  background-color: rgb(248, 249, 250);
+}
+.security-sections > p:hover {
+	color: #0095d5;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.security-sections > a {
+	text-align: center;
+	padding: 20px 0;
+	font-size: 18px;
+	font-weight: bold;
+	color: #555;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	background-color: rgb(248, 249, 250);
+}
+
+.security-sections > a:visited {
+	color: #555;
+}
+.security-sections > a:visited:hover {
+	color: #0095d5;
+}
+.security-sections > a > img {
+	width: 50px;
+	height: 50px;
+	padding-bottom: 5px;
+}
+.section-sup {
+	top: -1.0em;
+	font-size: 50%;
+}
+/* End Docs Products Nav Boxes */
