@@ -4,31 +4,20 @@ description: "Home page for the TrueNAS documentation projects."
 geekdocCollapseSection: true
 geekdocNav: false
 ---
-
-<head>
-<style>
-
-</style>
-</head>
 <style>
 div.gdoc-page__header {display: none;}
 div.docs-read_mod {display: none;}
+h1 {display:none;}
 </style>
-
-Welcome to the TrueNAS Documentation Hub!
 This website is a repository of all documentation written about TrueNAS projects and TrueNAS-related products provided by iXsystems, Inc.
 iXsystems employees maintain this website and regularly provide documentation updates.
-However, all documentation is open-source and accepts community contributions!
+All documentation is open-source and accepts community contributions.
 
-## Site Navigation
-
-**Ready to get started? Choose a product and document to begin learning about TrueNAS!**
-
-By default, you will see the documentation for that product's latest stable release.
+**Ready to get started? Choose a product and document to begin learning about TrueNAS.**
 
 To view documentation for **previous releases** or **beta documentation** for an upcoming release, choose a **Product** and **Version** from the search bar at the top of the page.
 
-To view all end of life documentation, click the **Archive** link in the **Additional Content** section at the bottom of this page.
+To view all end of life documentation, click the **Archive** link.
 
 <div class="docs-sections">
   <p>
@@ -73,7 +62,7 @@ To view all end of life documentation, click the **Archive** link in the **Addit
 ## Additional Content
 
 Interested in contributing to the TrueNAS projects or documentation or want to learn more about the technologies TrueNAS uses?
-Take a look at these additional content areas!
+See these additional content areas:
 
 <div class="docs-more-sections">
   <p>Project Contributions

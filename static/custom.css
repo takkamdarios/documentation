@@ -73,6 +73,9 @@ p,h1,h2,h3,h4,th,td,a,body {
 }
 /* End Site Nav Bar */
 /* Sticky top menu */
+.docsnav {
+	background: white;
+}
 .sticky {
     position: fixed;
     top: 0;
@@ -85,16 +88,18 @@ p,h1,h2,h3,h4,th,td,a,body {
     margin: 0 auto;
     width: 100%;
     padding: .5rem 1rem .5rem 1rem;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .stickyelement {
-    background: black;
+    background: white;
 }
 .truerow {
 	display: block;
 }
 .stickybackground {
 	z-index: 1;
-	width: 100%!important;
+	width: 100%
+	background: white;
 }
 
 .gdoc-header__link {
@@ -118,6 +123,30 @@ p,h1,h2,h3,h4,th,td,a,body {
         display: none;
     }
 }
+.docsnav {
+	display:flex;
+	flex-wrap:wrap;
+	padding-top:.5rem;
+	justify-content:center;
+	align-items:center;
+	width: 85%;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin: 0 auto;
+}
+.truenas-docsnav-menubutton {
+    background-color: white;
+    color: black;
+    padding: 13px;
+    border: none;
+    font-family: "din-2014";
+	font-size: 16px;
+    font-weight: 400;
+}
+.truenas-docsnav-menubutton:hover {
+  color: white;
+  background: #0095d5;
+}
 /* End sticky top menu */
 /* Fix Nav sidebar padding */
 .gdoc-nav, .nav {
@@ -127,9 +156,6 @@ p,h1,h2,h3,h4,th,td,a,body {
     background: #000000;
     padding: .5rem 1rem 1rem 1rem;
 	border-bottom-width: 0px;
-}
-
-.truenas-menuitem {
 }
 .truenas-menubutton {
     background-color: #000;

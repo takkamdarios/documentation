@@ -141,8 +141,7 @@
                 </div>
 			</div>
 		</div>
-		{{ partial "docs-nav" }}
-		
+	
     <div class="gdoc-menu-header">
       <span class="gdoc-menu-header__items">
         {{ if .Root.Site.Data.menu.extra.header }}
@@ -179,6 +178,9 @@
     </div>
   </div>
 </header>
+<nav>
+{{ partial "docs-nav" }}
+</nav>
 <!-- Make stickymenu stay on the top of the page when the user scrolls -->
 <script>
 window.onscroll = function() {myFunction()};
