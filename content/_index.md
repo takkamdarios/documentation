@@ -1,67 +1,98 @@
 ---
-title: "Documentation Hub"
+title: ""
+description: "Home page for the TrueNAS documentation projects."
 geekdocCollapseSection: true
 geekdocNav: false
 ---
 
-TrueNAS is the world's most popular Open Source storage operating system and is the most efficient solution for managing and sharing data over a network.
-It is the simplest way to create a safe, secure, centralized, and easily accessible place for your data.
-TrueNAS Open Storage provides unified ZFS-based storage for file, block, object, and application data.
+<head>
+<style>
 
-Whether you're looking to protect and share your company data or your family photos, [**TrueNAS CORE**]({{< relref "/CORE/_index.md" >}}) provides a secure, centralized, and easily accessible place for your data.
-[**TrueNAS SCALE**]({{< relref "/SCALE/_index.md" >}}) evolves NAS functionality even further with container support, dual active system configurations, and hyper-converged architecture.
-When combined with our high-availability hardware and [**TrueCommand**]({{< relref "/TrueCommand/_index.md" >}}) single interface management solution, TrueNAS Enterprise ensures that your data is always safe, secure, and available.
+</style>
+</head>
+<style>
+div.gdoc-page__header {display: none;}
+div.docs-read_mod {display: none;}
+</style>
 
-## Getting Started Guides
-
-{{< columns >}}
-![](/favicon/TN-favicon-32x32.png) [**TrueNAS CORE and Enterprise**]({{< relref "/CORE/GettingStarted/_index.md" >}})<br>
-
-![](/favicon/TNScale-favicon-32x32.png) [**TrueNAS SCALE**]({{< relref "/SCALE/GettingStarted/_index.md" >}})
-<--->
-![](/favicon/TC-favicon-32x32.png) [**TrueCommand**]({{< relref "/TrueCommand/TCGettingStarted/_index.md" >}})<br>
-
-![](/favicon/iXfavicon-32x32.png) [**TrueNAS Hardware**]({{< relref "/Hardware/_index.md" >}})
-{{< /columns >}}
+Welcome to the TrueNAS Documentation Hub!
+This website is a repository of all documentation written about TrueNAS projects and TrueNAS-related products provided by iXsystems, Inc.
+iXsystems employees maintain this website and regularly provide documentation updates.
+However, all documentation is open-source and accepts community contributions!
 
 ## Site Navigation
 
 **Ready to get started? Choose a product and document to begin learning about TrueNAS!**
 
 By default, you will see the documentation for that product's latest stable release.
-To view documentation for previous releases or beta documentation for an upcoming release, choose a **Product** and **Version** from the navigation bar across the top of the screen.
 
-<div class="security-sections">
+To view documentation for **previous releases** or **beta documentation** for an upcoming release, choose a **Product** and **Version** from the search bar at the top of the page.
+
+To view all end of life documentation, click the **Archive** link in the **Additional Content** section at the bottom of this page.
+
+<div class="docs-sections">
   <p>
-	<img src="/images/truenas_core-logo-full-color-rgb.png">
-	<br><small>TrueNAS CORE<sup class="section-sup">TM</sup> | Enterprise<sup class="section-sup">TM</sup></small>
-	<br><a href="/core/stable/releasenotes">Release Notes</a>
-	<br><a href="">Getting Started</a>
-	<br><a href="">Tutorials</a>
-	<br><a href="">UI Reference</a>
+	<img src="/images/truenas_core-logo-full-color-rgb.png" style="padding-bottom:.5rem;">
+	<br>CORE<sup class="section-sup">TM</sup> | Enterprise<sup class="section-sup">TM</sup>
+	<br><small>Latest Stable Documentation</small>
+	<br><a href="/core/stable/corereleasenotes">Release Notes</a>
+	<br><a href="/core/stable/gettingstarted/">Getting Started</a>
+	<br><a href="/core/stable/coretutorials/">Tutorials</a>
+	<br><a href="/core/stable/uireference/">UI Reference</a>
   </p>
   <p>
-	<img src="/images/truenas_scale-logo-full-color-rgb.png" style="padding-bottom:5px">
-	<br><small>TrueNAS SCALE<sup class="section-sup">TM</sup> | Enterprise<sup class="section-sup">TM</sup></small>
-	<br><a href="/scale/stable/releasenotes">Release Notes</a>
-	<br><a href="">Getting Started</a>
-	<br><a href="">Tutorials</a>
-	<br><a href="">UI Reference</a>
+	<img src="/images/truenas_scale-logo-full-color-rgb.png" style="padding-bottom:.5rem;">
+	<br>SCALE<sup class="section-sup">TM</sup> | Enterprise<sup class="section-sup">TM</sup>
+	<br><small>Latest Stable Documentation</small>
+	<br><a href="/scale/stable/scalereleasenotes">Release Notes</a>
+	<br><a href="/scale/stable/gettingstarted/">Getting Started</a>
+	<br><a href="/scale/stable/scaletutorials/">Tutorials</a>
+	<br><a href="/scale/stable/scaleuireference/">UI Reference</a>
+	<br><a href="/scale/stable/scaleclireference/">CLI Reference</a>
   </p>
   <p>
-	<img src="/images/truecommand-logo-full-color-rgb.png" style="padding-bottom:5px">
-	<br><small>TrueCommand<sup class="section-sup">®</sup></small>
-	<br><a href="/truecommand/stable/releasenotes">Release Notes</a>
-	<br><a href="">Getting Started</a>
-	<br><a href="">UI Reference</a>
-	<br><a href="">Clustering</a>
+	<img src="/images/truecommand-logo-full-color-rgb.png" style="padding-bottom:.5rem;">
+	<br>Container | Cloud
+	<br><small>Latest Stable Documentation</small>
+	<br><a href="/truecommand/stable/tcreleasenotes">Release Notes</a>
+	<br><a href="/truecommand/stable/tcgettingstarted/">Getting Started</a>
+	<br><a href="/truecommand/stable/">UI Reference</a>
+	<br><a href="/solutions/integrations/smbclustering/">Clustering</a>
   </p>
   <p>
-	<img src="/images/truenas_enterprise-logo-full-color-rgb.png" style="padding-bottom:5px">
-	<br><small>TrueNAS<sup class="section-sup">®</sup> Systems</small>
-	<br><a href="">Systems Overview</a>
-	<br><a href="">Visio Stencils</a>
-	<br><a href="">Notices</a>
-	<br><a href="">Legacy Systems</a>
+	<img src="/images/truenas_enterprise-logo-full-color-rgb.png" style="padding-bottom:.5rem;">
+	<br>TrueNAS<sup class="section-sup">®</sup> Systems
+	<br><small>Documentation Sections</small>
+	<br><a href="/hardware/">Systems Overview</a>
+	<br><a href="/hardware/stencils/">Visio Stencils</a>
+	<br><a href="/hardware/notices/">Notices</a>
+	<br><a href="/hardware/legacyhardware/">Legacy Systems</a>
+  </p>
+</div>
+
+## Additional Content
+
+Interested in contributing to the TrueNAS projects or documentation or want to learn more about the technologies TrueNAS uses?
+Take a look at these additional content areas!
+
+<div class="docs-more-sections">
+  <p>Project Contributions
+	<br><a href="/contributing">Overview</a>
+	<br><a href="/contributing/uitranslations/">Interface Translations</a>
+	<br><a href="/contributing/issuereporting/">TrueNAS Issue Reporting</a>
+	<br><a href="/contributing/documentation/">Documentation Changes</a>
+  </p>
+  <p>Reference Content
+  <br><a href="/solutions/">TrueNAS Solutions</a>
+  <br><a href="/references/copyrights/">Copyrights and Trademarks</a>
+  <br><a href="/references/conceptsandterms/">Concepts and Terminology</a>
+  <br><a href="/references/aclprimer/">Access Control List (ACL) Primer</a>
+  <br><a href="/references/zfsprimer/">Zettabyte File System (ZFS) Primer</a>
+  </p>
+  <p>Additional Documentation Links
+  <br><a href="https://security.truenas.com">Security Advisories</a>
+  <br><a href="/archive/">Archive</a>
+  <br><a href="https://www.github.com/truenas/documentation">Repository</a>
+  <br><a href="/index.xml">RSS Feed</a>
   </p>
 </div>
