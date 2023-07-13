@@ -1,65 +1,64 @@
 <div class="container stickyelement" id="stickymenu">
-	<div class="stickybackground">
-		<div class="docsnav">
-			<span class="docshome"><a href="/">TrueNAS Documentation</a></span>
-			<div class="truenas-menubar" style="float:right;">
-				<div class="truenas-menuitem">
-					<button class="truenas-docsnav-menubutton" id="productButton">Product <i class="fa fa-angle-down"></i></button>
-					<div class="truenas-menudropdown" id="productDropdown">
-						<div class="dropdown-item" onclick="selectProduct('TrueNAS CORE')">TrueNAS CORE</div>
-						<div class="dropdown-item" onclick="selectProduct('TrueNAS SCALE')">TrueNAS SCALE</div>
-						<div class="dropdown-item" onclick="selectProduct('TrueCommand')">TrueCommand</div>
-						<div class="dropdown-item" onclick="selectProduct('TrueNAS Systems'); window.location.href='/hardware/'">TrueNAS Systems</div>
-					</div>
-				</div>
-				<div class="truenas-menuitem" onmouseover="showVersionOptions()" onmouseout="hideVersionOptions()">
-					<button class="truenas-docsnav-menubutton" id="versionButton" disabled>Product Version <i class="fa fa-angle-down"></i></button>
-					<div class="truenas-navmenudropdown" id="versionDropdown">
-					<!-- Version dropdown options dynamically load -->
-					</div>
-					<button class="docs-load-button" onclick="goToSelectedUrl()" disabled>Go</button>
-				</div>
-				<form id="docssearch" action="https://www.google.com/search" method="get" disabled>
-					<input type="hidden" id="searchUrl" name="q" value="https://www.example.com/" />
-					<input type="text" name="search" placeholder="Choose Product and Version" disabled />
-					<input id="docssearchbutton" type="submit" value="Search" disabled />
-				</form>
-			    <span id="gdoc-color-theme"style="padding-right:13px;display:flex;align-items:center;justify-content:center;">
-				  <svg class="gdoc-icon gdoc_brightness_dark" style="width:30px;height:30px;">
-				  <title>{{ i18n "button_toggle_dark" }}</title>
-				  <use xlink:href="#gdoc_brightness_dark"></use>
-				  </svg>
-				  <svg class="gdoc-icon gdoc_brightness_light" style="width:30px;height:30px;">
-				  <title>{{ i18n "button_toggle_dark" }}</title>
-				  <use xlink:href="#gdoc_brightness_light"></use>
-				  </svg>
-				  <svg class="gdoc-icon gdoc_brightness_auto" style="width:30px;height:30px;">
-				  <title>{{ i18n "button_toggle_dark" }}</title>
-				  <use xlink:href="#gdoc_brightness_auto"></use>
-				  </svg>
-			    </span>
-				<div id="google_translate_element"></div>
-			</div>
-		</div>
-	</div>
+  <div class="stickybackground">
+    <div class="docsnav">
+      <span class="docshome"><a href="/">TrueNAS Documentation</a></span>
+      <div class="truenas-menubar" style="float:right;">
+        <div class="truenas-menuitem">
+          <button class="truenas-docsnav-menubutton" id="productButton">Product <i class="fa fa-angle-down"></i></button>
+          <div class="truenas-menudropdown" id="productDropdown">
+            <div class="dropdown-item" onclick="selectProduct('TrueNAS CORE')">TrueNAS CORE</div>
+            <div class="dropdown-item" onclick="selectProduct('TrueNAS SCALE')">TrueNAS SCALE</div>
+            <div class="dropdown-item" onclick="selectProduct('TrueCommand')">TrueCommand</div>
+            <div class="dropdown-item" onclick="selectProduct('TrueNAS Systems'); window.location.href='/hardware/'">TrueNAS Systems</div>
+          </div>
+        </div>
+        <div class="truenas-menuitem" onmouseover="showVersionOptions()" onmouseout="hideVersionOptions()">
+          <button class="truenas-docsnav-menubutton" id="versionButton" disabled>Product Version <i class="fa fa-angle-down"></i></button>
+          <div class="truenas-navmenudropdown" id="versionDropdown" style="display: none;">
+            <!-- Version dropdown options dynamically load -->
+          </div>
+          <button class="docs-load-button" onclick="goToSelectedUrl()" disabled>Go</button>
+        </div>
+        <form id="docssearch" action="https://www.google.com/search" method="get" disabled>
+          <input type="hidden" id="searchUrl" name="q" value="https://www.google.com/" />
+          <input type="text" name="q" placeholder="Choose Product and Version" disabled />
+          <input id="docssearchbutton" type="submit" value="Search" disabled />
+        </form>
+        <span id="gdoc-color-theme" style="padding-right:13px;display:flex;align-items:center;justify-content:center;">
+          <svg class="gdoc-icon gdoc_brightness_dark" style="width:30px;height:30px;">
+            <title>{{ i18n "button_toggle_dark" }}</title>
+            <use xlink:href="#gdoc_brightness_dark"></use>
+          </svg>
+          <svg class="gdoc-icon gdoc_brightness_light" style="width:30px;height:30px;">
+            <title>{{ i18n "button_toggle_dark" }}</title>
+            <use xlink:href="#gdoc_brightness_light"></use>
+          </svg>
+          <svg class="gdoc-icon gdoc_brightness_auto" style="width:30px;height:30px;">
+            <title>{{ i18n "button_toggle_dark" }}</title>
+            <use xlink:href="#gdoc_brightness_auto"></use>
+          </svg>
+        </span>
+        <div id="google_translate_element"></div>
+      </div>
+    </div>
+  </div>
 </div>
 <script>
 function selectProduct(product) {
   document.getElementById('productButton').textContent = product;
   document.getElementById('versionButton').disabled = false;
-  
+
   var versionDropdown = document.getElementById('versionDropdown');
+  versionDropdown.style.display = 'none';
   versionDropdown.innerHTML = '';
-  
+
   if (product === 'TrueNAS CORE') {
     versionDropdown.innerHTML = `
-      <div class="dropdown-item" onclick="selectVersion('/core/latest/')">Latest Stable</div>
       <div class="dropdown-item" onclick="selectVersion('/core/13/')">13.0</div>
       <div class="dropdown-item" onclick="selectVersion('/archive/')">Archive</div>
     `;
   } else if (product === 'TrueNAS SCALE') {
     versionDropdown.innerHTML = `
-      <div class="dropdown-item" onclick="selectVersion('/scale/latest/')">Latest Stable</div>
       <div class="dropdown-item" onclick="selectVersion('/scale/2310/')">23.10</div>
       <div class="dropdown-item" onclick="selectVersion('/scale/2212/')">22.12</div>
       <div class="dropdown-item" onclick="selectVersion('/scale/2202/')">22.02</div>
@@ -67,14 +66,12 @@ function selectProduct(product) {
     `;
   } else if (product === 'TrueCommand') {
     versionDropdown.innerHTML = `
-      <div class="dropdown-item" onclick="selectVersion('/truecommand/latest/')">Latest Stable</div>
       <div class="dropdown-item" onclick="selectVersion('/truecommand/2/')">2</div>
       <div class="dropdown-item" onclick="selectVersion('/truecommand/1/')">1</div>
       <div class="dropdown-item" onclick="selectVersion('/archive/')">Archive</div>
     `;
   }
-  
-  // Enable version dropdown and reset search form
+
   document.getElementById('versionButton').disabled = false;
   document.getElementById('docssearch').reset();
   document.getElementById('docssearch').disabled = true;
@@ -82,27 +79,33 @@ function selectProduct(product) {
 }
 
 function selectVersion(version) {
-  // Update search URL for form action
-  var searchUrl = 'https://www.example.com' + version;
+  var searchUrl = 'https://www.google.com' + version;
   document.getElementById('docssearch').action = searchUrl;
-  
-  // Enable search form and go button
+
   document.getElementById('docssearch').disabled = false;
   document.getElementById('docssearchbutton').disabled = false;
-  
-  // Update search parameter to only search within the URL provided by the version
+
   var searchInput = document.getElementById('docssearch').querySelector('input[name="q"]');
   searchInput.value = 'site:' + searchUrl + ' ' + searchInput.value;
-  
-  // Enable go button
-  document.querySelector('.go-button').disabled = false;
+
+  document.querySelector('.docs-load-button').disabled = false;
+}
+
+function showVersionOptions() {
+  var versionDropdown = document.getElementById('versionDropdown');
+  versionDropdown.style.display = 'block';
+}
+
+function hideVersionOptions() {
+  var versionDropdown = document.getElementById('versionDropdown');
+  versionDropdown.style.display = 'none';
 }
 
 function updateGoButtonState() {
   var product = document.getElementById('product').value;
   var version = document.getElementById('version').value;
-  var goButton = document.querySelector('.go-button');
-  
+  var goButton = document.querySelector('.docs-load-button');
+
   if (product && version) {
     goButton.disabled = false;
   } else {
@@ -113,9 +116,9 @@ function updateGoButtonState() {
 function goToSelectedUrl() {
   var product = document.getElementById('product').value;
   var version = document.getElementById('version').value;
-  
+
   if (product && version) {
-    var url = 'https://www.example.com' + product + version;
+    var url = 'localhost:1313' + product + version;
     window.location.href = url;
   }
 }
@@ -123,7 +126,6 @@ function goToSelectedUrl() {
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en'},
-'google_translate_element');
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
 }
 </script>
