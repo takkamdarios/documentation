@@ -52,9 +52,23 @@ p,h1,h2,h3,h4,th,td,a,body {
 .docshome a:hover {
   text-decoration: none;
 }
-.truenas-menubutton[disabled] {
+.docs-load-button {
+	background: #0095d5;
+}
+#docssearch {
+	display: flex;
+	float: right;
+	justify-content:center;
+	align-items:center;
+	padding-left: 1rem;
+}
+#docssearch [disabled]{
 	color: rgba(128, 128, 128, 0.5);
 	pointer-events: none;
+}
+#docssearchbutton {
+	color: white;
+	background: #0095d5;
 }
 .truenas-navmenudropdown {
     display: none;
@@ -73,9 +87,6 @@ p,h1,h2,h3,h4,th,td,a,body {
 }
 /* End Site Nav Bar */
 /* Sticky top menu */
-.docsnav {
-	background: white;
-}
 .sticky {
     position: fixed;
     top: 0;
@@ -124,14 +135,13 @@ p,h1,h2,h3,h4,th,td,a,body {
     }
 }
 .docsnav {
+	background: white;
 	display:flex;
 	flex-wrap:wrap;
 	padding-top:.5rem;
 	justify-content:center;
 	align-items:center;
 	width: 85%;
-	padding-left: 1rem;
-	padding-right: 1rem;
 	margin: 0 auto;
 }
 .truenas-docsnav-menubutton {
@@ -146,6 +156,10 @@ p,h1,h2,h3,h4,th,td,a,body {
 .truenas-docsnav-menubutton:hover {
   color: white;
   background: #0095d5;
+}
+.truenas-docsnav-menubutton[disabled] {
+	color: rgba(128, 128, 128, 0.5);
+	pointer-events: none;
 }
 /* End sticky top menu */
 /* Fix Nav sidebar padding */

@@ -1,11 +1,7 @@
-<div class="stickyelement" id="stickymenu">
+<div class="container stickyelement" id="stickymenu">
 	<div class="stickybackground">
-		<div class="container docsnav">
+		<div class="docsnav">
 			<span class="docshome"><a href="/">TrueNAS Documentation</a></span>
-			<form action="https://www.google.com/search" method="get" style="float:right;">
-				<input type="text" name="q" placeholder="Search..." />
-				<input type="submit" value="Search" />
-			</form>
 			<div class="truenas-menubar" style="float:right;">
 				<div class="truenas-menuitem">
 					<button class="truenas-docsnav-menubutton" id="productButton">Product <i class="fa fa-angle-down"></i></button>
@@ -21,7 +17,13 @@
 					<div class="truenas-navmenudropdown" id="versionDropdown">
 					<!-- Version dropdown options dynamically load -->
 					</div>
-			    </div>
+					<button class="docs-load-button" onclick="goToSelectedUrl()" disabled>Go</button>
+				</div>
+				<form id="docssearch" action="https://www.google.com/search" method="get" disabled>
+					<input type="hidden" id="searchUrl" name="q" value="https://www.example.com/" />
+					<input type="text" name="search" placeholder="Choose Product and Version" disabled />
+					<input id="docssearchbutton" type="submit" value="Search" disabled />
+				</form>
 			    <span id="gdoc-color-theme"style="padding-right:13px;display:flex;align-items:center;justify-content:center;">
 				  <svg class="gdoc-icon gdoc_brightness_dark" style="width:30px;height:30px;">
 				  <title>{{ i18n "button_toggle_dark" }}</title>
@@ -44,52 +46,78 @@
 <script>
 function selectProduct(product) {
   document.getElementById('productButton').textContent = product;
-  document.getElementById('versionButton').removeAttribute('disabled');
-  document.getElementById('versionDropdown').innerHTML = '';
-
+  document.getElementById('versionButton').disabled = false;
+  
+  var versionDropdown = document.getElementById('versionDropdown');
+  versionDropdown.innerHTML = '';
+  
   if (product === 'TrueNAS CORE') {
-    document.getElementById('versionDropdown').innerHTML = `
-	  <div class="dropdown-item"><a href="/core/latest/">Latest Stable</a></div>
-      <div class="dropdown-item"><a href="/core/13/">13.0</a></div>
-	  <div class="dropdown-item"><a href="/archive/">Archive</a></div>
+    versionDropdown.innerHTML = `
+      <div class="dropdown-item" onclick="selectVersion('/core/latest/')">Latest Stable</div>
+      <div class="dropdown-item" onclick="selectVersion('/core/13/')">13.0</div>
+      <div class="dropdown-item" onclick="selectVersion('/archive/')">Archive</div>
     `;
   } else if (product === 'TrueNAS SCALE') {
-    document.getElementById('versionDropdown').innerHTML = `
-      <div class="dropdown-item"><a href="/scale/latest/">Latest Stable</a></div>
-	  <div class="dropdown-item"><a href="/scale/2310/">23.10</a></div>
-	  <div class="dropdown-item"><a href="/scale/2212/">22.12</a></div>
-	  <div class="dropdown-item"><a href="/scale/2202/">22.02</a></div>
-	  <div class="dropdown-item"><a href="/archive/">Archive</a></div>
+    versionDropdown.innerHTML = `
+      <div class="dropdown-item" onclick="selectVersion('/scale/latest/')">Latest Stable</div>
+      <div class="dropdown-item" onclick="selectVersion('/scale/2310/')">23.10</div>
+      <div class="dropdown-item" onclick="selectVersion('/scale/2212/')">22.12</div>
+      <div class="dropdown-item" onclick="selectVersion('/scale/2202/')">22.02</div>
+      <div class="dropdown-item" onclick="selectVersion('/archive/')">Archive</div>
     `;
   } else if (product === 'TrueCommand') {
-    document.getElementById('versionDropdown').innerHTML = `
-      <div class="dropdown-item"><a href="/truecommand/latest/">Latest Stable</a></div>
-	  <div class="dropdown-item"><a href="/truecommand/2/">2</a></div>
-      <div class="dropdown-item"><a href="/truecommand/1/">1</a></div>
-	  <div class="dropdown-item"><a href="/archive/">Archive</a></div>
+    versionDropdown.innerHTML = `
+      <div class="dropdown-item" onclick="selectVersion('/truecommand/latest/')">Latest Stable</div>
+      <div class="dropdown-item" onclick="selectVersion('/truecommand/2/')">2</div>
+      <div class="dropdown-item" onclick="selectVersion('/truecommand/1/')">1</div>
+      <div class="dropdown-item" onclick="selectVersion('/archive/')">Archive</div>
     `;
   }
-}
-
-var versionDropdownVisible = false;
-
-function showVersionOptions() {
-  if (!versionDropdownVisible) {
-    document.getElementById('versionDropdown').style.display = 'block';
-    versionDropdownVisible = true;
-  }
-}
-
-function hideVersionOptions() {
-  if (versionDropdownVisible) {
-    document.getElementById('versionDropdown').style.display = 'none';
-    versionDropdownVisible = false;
-  }
+  
+  // Enable version dropdown and reset search form
+  document.getElementById('versionButton').disabled = false;
+  document.getElementById('docssearch').reset();
+  document.getElementById('docssearch').disabled = true;
+  document.getElementById('docssearchbutton').disabled = true;
 }
 
 function selectVersion(version) {
-  document.getElementById('versionButton').textContent = version;
-  hideVersionOptions();
+  // Update search URL for form action
+  var searchUrl = 'https://www.example.com' + version;
+  document.getElementById('docssearch').action = searchUrl;
+  
+  // Enable search form and go button
+  document.getElementById('docssearch').disabled = false;
+  document.getElementById('docssearchbutton').disabled = false;
+  
+  // Update search parameter to only search within the URL provided by the version
+  var searchInput = document.getElementById('docssearch').querySelector('input[name="q"]');
+  searchInput.value = 'site:' + searchUrl + ' ' + searchInput.value;
+  
+  // Enable go button
+  document.querySelector('.go-button').disabled = false;
+}
+
+function updateGoButtonState() {
+  var product = document.getElementById('product').value;
+  var version = document.getElementById('version').value;
+  var goButton = document.querySelector('.go-button');
+  
+  if (product && version) {
+    goButton.disabled = false;
+  } else {
+    goButton.disabled = true;
+  }
+}
+
+function goToSelectedUrl() {
+  var product = document.getElementById('product').value;
+  var version = document.getElementById('version').value;
+  
+  if (product && version) {
+    var url = 'https://www.example.com' + product + version;
+    window.location.href = url;
+  }
 }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
