@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Documentation Hub"
 description: "Home page for the TrueNAS documentation projects."
 geekdocCollapseSection: true
 geekdocNav: false

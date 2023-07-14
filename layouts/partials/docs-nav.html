@@ -1,30 +1,26 @@
 <div class="container stickyelement" id="stickymenu">
   <div class="stickybackground">
     <div class="docsnav">
-      <span class="docshome"><a href="/">TrueNAS Documentation</a></span>
+      <span class="docshome"><a href="/">Documentation Hub</a></span>
       <div class="truenas-menubar" style="float:right;">
-        <div class="truenas-menuitem">
+        <div class="truenas-docsnav-menuitem">
           <button class="truenas-docsnav-menubutton" id="productButton">Product <i class="fa fa-angle-down"></i></button>
-          <div class="truenas-menudropdown" id="productDropdown">
-            <div class="dropdown-item" onclick="selectProduct('TrueNAS CORE')">TrueNAS CORE</div>
-            <div class="dropdown-item" onclick="selectProduct('TrueNAS SCALE')">TrueNAS SCALE</div>
-            <div class="dropdown-item" onclick="selectProduct('TrueCommand')">TrueCommand</div>
-            <div class="dropdown-item" onclick="selectProduct('TrueNAS Systems'); window.location.href='/hardware/'">TrueNAS Systems</div>
+          <div class="truenas-navmenudropdown" id="productDropdown">
+            <div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS CORE')" id="core">TrueNAS CORE</div>
+            <div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS SCALE')" id="scale">TrueNAS SCALE</div>
+            <div class="truenas-dropdown-item" onclick="selectProduct('TrueCommand')" id="truecommand">TrueCommand</div>
+            <div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS Systems'); window.location.href='/hardware/'">TrueNAS Systems</div>
           </div>
         </div>
-        <div class="truenas-menuitem" onmouseover="showVersionOptions()" onmouseout="hideVersionOptions()">
-          <button class="truenas-docsnav-menubutton" id="versionButton" disabled>Product Version <i class="fa fa-angle-down"></i></button>
+        <div class="truenas-docsnav-menuitem" onmouseover="showVersionOptions()" onmouseout="hideVersionOptions()">
+          <button class="truenas-docsnav-menubutton" id="versionButton" disabled><span id="selectedVersionPlaceholder">Version <i class="fa fa-angle-down"></i></span></button>
           <div class="truenas-navmenudropdown" id="versionDropdown" style="display: none;">
             <!-- Version dropdown options dynamically load -->
           </div>
-          <button class="docs-load-button" onclick="goToSelectedUrl()" disabled>Go</button>
         </div>
-        <form id="docssearch" action="https://www.google.com/search" method="get" disabled>
-          <input type="hidden" id="searchUrl" name="q" value="https://www.google.com/" />
-          <input type="text" name="q" placeholder="Choose Product and Version" disabled />
-          <input id="docssearchbutton" type="submit" value="Search" disabled />
-        </form>
-        <span id="gdoc-color-theme" style="padding-right:13px;display:flex;align-items:center;justify-content:center;">
+        <button class="docs-load-button" onclick="goToSelectedUrl()" disabled>Go</button>
+        <!-- Placeholder for Docs Search element to drop in here -->
+        <span id="gdoc-color-theme" style="padding-left:13px;padding-right:13px;display:flex;align-items:center;justify-content:center;">
           <svg class="gdoc-icon gdoc_brightness_dark" style="width:30px;height:30px;">
             <title>{{ i18n "button_toggle_dark" }}</title>
             <use xlink:href="#gdoc_brightness_dark"></use>
@@ -44,88 +40,87 @@
   </div>
 </div>
 <script>
-function selectProduct(product) {
-  document.getElementById('productButton').textContent = product;
-  document.getElementById('versionButton').disabled = false;
+  function selectProduct(product) {
+    document.getElementById('productButton').textContent = product;
+    document.getElementById('versionButton').disabled = false;
 
-  var versionDropdown = document.getElementById('versionDropdown');
-  versionDropdown.style.display = 'none';
-  versionDropdown.innerHTML = '';
+    var versionDropdown = document.getElementById('versionDropdown');
+    versionDropdown.style.display = 'none';
+    versionDropdown.innerHTML = '';
 
-  if (product === 'TrueNAS CORE') {
-    versionDropdown.innerHTML = `
-      <div class="dropdown-item" onclick="selectVersion('/core/13/')">13.0</div>
-      <div class="dropdown-item" onclick="selectVersion('/archive/')">Archive</div>
-    `;
-  } else if (product === 'TrueNAS SCALE') {
-    versionDropdown.innerHTML = `
-      <div class="dropdown-item" onclick="selectVersion('/scale/2310/')">23.10</div>
-      <div class="dropdown-item" onclick="selectVersion('/scale/2212/')">22.12</div>
-      <div class="dropdown-item" onclick="selectVersion('/scale/2202/')">22.02</div>
-      <div class="dropdown-item" onclick="selectVersion('/archive/')">Archive</div>
-    `;
-  } else if (product === 'TrueCommand') {
-    versionDropdown.innerHTML = `
-      <div class="dropdown-item" onclick="selectVersion('/truecommand/2/')">2</div>
-      <div class="dropdown-item" onclick="selectVersion('/truecommand/1/')">1</div>
-      <div class="dropdown-item" onclick="selectVersion('/archive/')">Archive</div>
-    `;
+    if (product === 'TrueNAS CORE') {
+      versionDropdown.innerHTML = `
+        <div class="truenas-dropdown-item" onclick="selectVersion('13')" id="13">13.0</div>
+        <div class="truenas-dropdown-item" onclick="selectVersion('12')" id="12">12.0</div>
+      `;
+    } else if (product === 'TrueNAS SCALE') {
+      versionDropdown.innerHTML = `
+        <div class="truenas-dropdown-item" onclick="selectVersion('2310')" id="23.10">23.10</div>
+        <div class="truenas-dropdown-item" onclick="selectVersion('2212')" id="22.12">22.12</div>
+        <div class="truenas-dropdown-item" onclick="selectVersion('2202')" id="22.02">22.02</div>
+      `;
+    } else if (product === 'TrueCommand') {
+      versionDropdown.innerHTML = `
+        <div class="truenas-dropdown-item" onclick="selectVersion('3')" id="3">3</div>
+        <div class="truenas-dropdown-item" onclick="selectVersion('2')" id="2">2</div>
+        <div class="truenas-dropdown-item" onclick="selectVersion('1')" id="1">1</div>
+      `;
+    }
+
+    document.getElementById('versionButton').disabled = false;
   }
 
-  document.getElementById('versionButton').disabled = false;
-  document.getElementById('docssearch').reset();
-  document.getElementById('docssearch').disabled = true;
-  document.getElementById('docssearchbutton').disabled = true;
-}
+  function selectVersion(version) {
+    var versionOptions = document.querySelectorAll('.truenas-dropdown-item');
 
-function selectVersion(version) {
-  var searchUrl = 'https://www.google.com' + version;
-  document.getElementById('docssearch').action = searchUrl;
+    versionOptions.forEach(function(option) {
+      option.classList.remove('selected');
+    });
 
-  document.getElementById('docssearch').disabled = false;
-  document.getElementById('docssearchbutton').disabled = false;
+    var selectedOption = document.getElementById(version);
+    selectedOption.classList.add('selected');
 
-  var searchInput = document.getElementById('docssearch').querySelector('input[name="q"]');
-  searchInput.value = 'site:' + searchUrl + ' ' + searchInput.value;
+    var selectedVersionPlaceholder = document.getElementById('selectedVersionPlaceholder');
+    selectedVersionPlaceholder.innerText = selectedOption.innerText;
 
-  document.querySelector('.docs-load-button').disabled = false;
-}
-
-function showVersionOptions() {
-  var versionDropdown = document.getElementById('versionDropdown');
-  versionDropdown.style.display = 'block';
-}
-
-function hideVersionOptions() {
-  var versionDropdown = document.getElementById('versionDropdown');
-  versionDropdown.style.display = 'none';
-}
-
-function updateGoButtonState() {
-  var product = document.getElementById('product').value;
-  var version = document.getElementById('version').value;
-  var goButton = document.querySelector('.docs-load-button');
-
-  if (product && version) {
-    goButton.disabled = false;
-  } else {
-    goButton.disabled = true;
+    document.querySelector('.docs-load-button').disabled = false;
   }
-}
 
-function goToSelectedUrl() {
-  var product = document.getElementById('product').value;
-  var version = document.getElementById('version').value;
-
-  if (product && version) {
-    var url = 'localhost:1313' + product + version;
-    window.location.href = url;
+  function showVersionOptions() {
+    var versionDropdown = document.getElementById('versionDropdown');
+    versionDropdown.style.display = 'block';
   }
-}
+
+  function hideVersionOptions() {
+    var versionDropdown = document.getElementById('versionDropdown');
+    versionDropdown.style.display = 'none';
+  }
+
+  function updateGoButtonState() {
+    var product = document.getElementById('productButton').innerText;
+    var version = document.getElementById('selectedVersionPlaceholder').innerText;
+    var goButton = document.querySelector('.docs-load-button');
+
+    if (product && version) {
+      goButton.disabled = false;
+    } else {
+      goButton.disabled = true;
+    }
+  }
+
+  function goToSelectedUrl() {
+    var product = document.getElementById('productButton').innerText;
+    var version = document.getElementById('versionDropdown').querySelector('.selected').id;
+
+    if (product && version) {
+      var url = 'localhost:1313/' + product + '/' + version;
+      window.location.href = url;
+    }
+  }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-}
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+  }
 </script>
