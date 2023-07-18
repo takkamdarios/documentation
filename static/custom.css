@@ -85,22 +85,13 @@ p,h1,h2,h3,h4,th,td,a,body {
 .truenas-navmenudropdown {
     display: none;
     position: absolute;
+	color: white;
     background-color: #0095d5;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 10;
+	padding: 13px;
 }
-.truenas-navmenudropdown a {
-    font-family: "din-2014";
-	font-size: 16px;
-    font-weight: 500;
-    color: white;
-    text-decoration: none;
-    display: table;
-}
-.truenas-docs-menuitem:hover .truenas-navmenudropdown {display: block;}
-.truenas-docs-menuitem:hover .truenas-docsnav-menubutton {background-color: #0e0e0e;color:#31beec;}
-.truenas-docs-menuitem:hover .truenasdownload-menudropdown {display: block;}
-.docs-dropdown-item {
+.truenas-dropdown-item {
   cursor: pointer;
   font-family: "din-2014";
   font-size: 16px;
@@ -110,6 +101,10 @@ p,h1,h2,h3,h4,th,td,a,body {
   text-decoration: none;
   display: table;
 }
+.truenas-docs-menuitem:hover .truenas-navmenudropdown {display: block;}
+.truenas-docs-menuitem:hover .truenas-docsnav-menubutton {background-color: #0e0e0e;color:#31beec;}
+.truenas-docs-menuitem:hover .truenasdownload-menudropdown {display: block;}
+
 /* End Site Nav Bar */
 /* Sticky top menu */
 .sticky {

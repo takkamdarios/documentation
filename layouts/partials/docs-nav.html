@@ -3,21 +3,21 @@
     <div class="docsnav">
       <span class="docshome"><a href="/">Documentation Hub</a></span>
       <div class="truenas-menubar" style="float:right;">
-        <div class="truenas-docsnav-menuitem">
-          <button class="truenas-docsnav-menubutton" id="productButton">Product <i class="fa fa-angle-down"></i></button>
-          <div class="truenas-navmenudropdown" id="productDropdown">
-            <div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS CORE')" id="core">TrueNAS CORE</div>
-            <div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS SCALE')" id="scale">TrueNAS SCALE</div>
-            <div class="truenas-dropdown-item" onclick="selectProduct('TrueCommand')" id="truecommand">TrueCommand</div>
-            <div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS Systems'); window.location.href='/hardware/'">TrueNAS Systems</div>
-          </div>
-        </div>
+        <div class="truenas-docsnav-menuitem" onmouseover="showProductOptions()" onmouseout="hideProductOptions()">
+		  <button class="truenas-docsnav-menubutton" id="productButton">Product <i class="fa fa-angle-down"></i></button>
+		  <div class="truenas-navmenudropdown" id="productDropdown">
+		    <div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS CORE')" id="core">TrueNAS CORE</div>
+		    <div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS SCALE')" id="scale">TrueNAS SCALE</div>
+		    <div class="truenas-dropdown-item" onclick="selectProduct('TrueCommand')" id="truecommand">TrueCommand</div>
+		    <div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS Systems')" id="hardware">TrueNAS Systems</div>
+		  </div>
+		</div>
         <div class="truenas-docsnav-menuitem" onmouseover="showVersionOptions()" onmouseout="hideVersionOptions()">
-          <button class="truenas-docsnav-menubutton" id="versionButton" disabled><span id="selectedVersionPlaceholder">Version <i class="fa fa-angle-down"></i></span></button>
-          <div class="truenas-navmenudropdown" id="versionDropdown" style="display: none;">
-            <!-- Version dropdown options dynamically load -->
-          </div>
-        </div>
+			<button class="truenas-docsnav-menubutton" id="versionButton" disabled><span id="selectedVersionPlaceholder">Version <i class="fa fa-angle-down"></i></span></button>
+			<div class="truenas-navmenudropdown" id="versionDropdown" style="display: none;">
+				<!-- Version dropdown options dynamically load -->
+			</div>
+		</div>
         <button class="docs-load-button" onclick="goToSelectedUrl()" disabled>Go</button>
         <!-- Placeholder for Docs Search element to drop in here -->
         <span id="gdoc-color-theme" style="padding-left:13px;padding-right:13px;display:flex;align-items:center;justify-content:center;">
@@ -108,6 +108,8 @@
       `;
     }
 
+    updateDropdownPlaceholderText();
+
     document.getElementById('versionButton').disabled = false;
   }
 
@@ -127,14 +129,14 @@
     document.querySelector('.docs-load-button').disabled = false;
   }
 
-  function showVersionOptions() {
-    var versionDropdown = document.getElementById('versionDropdown');
-    versionDropdown.style.display = 'block';
+  function showProductOptions() {
+    var productDropdown = document.getElementById('productDropdown');
+    productDropdown.style.display = 'block';
   }
 
-  function hideVersionOptions() {
-    var versionDropdown = document.getElementById('versionDropdown');
-    versionDropdown.style.display = 'none';
+  function hideProductOptions() {
+    var productDropdown = document.getElementById('productDropdown');
+    productDropdown.style.display = 'none';
   }
 
   function updateGoButtonState() {
