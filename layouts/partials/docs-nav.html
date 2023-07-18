@@ -4,13 +4,13 @@
       <span class="docshome"><a href="/">Documentation Hub</a></span>
       <div class="truenas-menubar" style="float:right;">
         <div class="truenas-docsnav-menuitem" onmouseover="showProductOptions()" onmouseout="hideProductOptions()">
-		  <button class="truenas-docsnav-menubutton" id="productButton">Product <i class="fa fa-angle-down"></i></button>
-		  <div class="truenas-navmenudropdown" id="productDropdown">
-		    <div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS CORE')" id="core">TrueNAS CORE</div>
-		    <div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS SCALE')" id="scale">TrueNAS SCALE</div>
-		    <div class="truenas-dropdown-item" onclick="selectProduct('TrueCommand')" id="truecommand">TrueCommand</div>
-		    <div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS Systems')" id="hardware">TrueNAS Systems</div>
-		  </div>
+			<button class="truenas-docsnav-menubutton" id="productButton" data-product-id="">Product <i class="fa fa-angle-down"></i></button>
+			<div class="truenas-navmenudropdown" id="productDropdown">
+				<div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS CORE')" data-id="core">TrueNAS CORE</div>
+				<div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS SCALE')" data-id="scale">TrueNAS SCALE</div>
+				<div class="truenas-dropdown-item" onclick="selectProduct('TrueCommand')" data-id="truecommand">TrueCommand</div>
+				<div class="truenas-dropdown-item" onclick="selectProduct('TrueNAS Systems')" data-id="hardware">TrueNAS Systems</div>
+			</div>
 		</div>
         <div class="truenas-docsnav-menuitem" onmouseover="showVersionOptions()" onmouseout="hideVersionOptions()">
 			<button class="truenas-docsnav-menubutton" id="versionButton" disabled><span id="selectedVersionPlaceholder">Version <i class="fa fa-angle-down"></i></span></button>
@@ -82,7 +82,9 @@
   updateDropdownPlaceholderText();
   
   function selectProduct(product) {
-    document.getElementById('productButton').textContent = product;
+    var productButton = document.getElementById('productButton');
+    productButton.textContent = product;
+    productButton.dataset.productId = product.toLowerCase().replace(/\s/g, ''); // Store the selected product ID
     document.getElementById('versionButton').disabled = false;
 
     var versionDropdown = document.getElementById('versionDropdown');
@@ -91,14 +93,14 @@
 
     if (product === 'TrueNAS CORE') {
       versionDropdown.innerHTML = `
-        <div class="truenas-dropdown-item" onclick="selectVersion('13')" id="13">13.0</div>
-        <div class="truenas-dropdown-item" onclick="selectVersion('12')" id="12">12.0</div>
+        <div class="truenas-dropdown-item" onclick="selectVersion('13.0')" id="13">13.0</div>
+        <div class="truenas-dropdown-item" onclick="selectVersion('12.0')" id="12">12.0</div>
       `;
     } else if (product === 'TrueNAS SCALE') {
       versionDropdown.innerHTML = `
-        <div class="truenas-dropdown-item" onclick="selectVersion('2310')" id="23.10">23.10</div>
-        <div class="truenas-dropdown-item" onclick="selectVersion('2212')" id="22.12">22.12</div>
-        <div class="truenas-dropdown-item" onclick="selectVersion('2202')" id="22.02">22.02</div>
+        <div class="truenas-dropdown-item" onclick="selectVersion('23.10')" id="2310">23.10</div>
+        <div class="truenas-dropdown-item" onclick="selectVersion('22.12')" id="2212">22.12</div>
+        <div class="truenas-dropdown-item" onclick="selectVersion('22.02')" id="2202">22.02</div>
       `;
     } else if (product === 'TrueCommand') {
       versionDropdown.innerHTML = `
@@ -108,23 +110,21 @@
       `;
     }
 
-    updateDropdownPlaceholderText();
-
     document.getElementById('versionButton').disabled = false;
   }
 
   function selectVersion(version) {
     var versionOptions = document.querySelectorAll('.truenas-dropdown-item');
 
-    versionOptions.forEach(function(option) {
+    versionOptions.forEach(function (option) {
       option.classList.remove('selected');
     });
 
-    var selectedOption = document.getElementById(version);
+    var selectedOption = document.querySelector(`.truenas-dropdown-item[onclick="selectVersion('${version}')"]`);
     selectedOption.classList.add('selected');
 
-    var selectedVersionPlaceholder = document.getElementById('selectedVersionPlaceholder');
-    selectedVersionPlaceholder.innerText = selectedOption.innerText;
+    var versionButton = document.getElementById('versionButton');
+    versionButton.textContent = version; // Update the versionButton text directly
 
     document.querySelector('.docs-load-button').disabled = false;
   }
@@ -138,26 +138,42 @@
     var productDropdown = document.getElementById('productDropdown');
     productDropdown.style.display = 'none';
   }
+  
+  function showVersionOptions() {
+    var productButton = document.getElementById('productButton');
+    var selectedProductId = productButton.dataset.productId; // Get the selected product ID
 
-  function updateGoButtonState() {
-    var product = document.getElementById('productButton').innerText;
-    var version = document.getElementById('selectedVersionPlaceholder').innerText;
-    var goButton = document.querySelector('.docs-load-button');
-
-    if (product && version) {
-      goButton.disabled = false;
+    var versionDropdown = document.getElementById('versionDropdown');
+    if (selectedProductId) {
+      versionDropdown.style.display = 'block';
     } else {
-      goButton.disabled = true;
+      versionDropdown.style.display = 'none';
     }
   }
 
-  function goToSelectedUrl() {
-    var product = document.getElementById('productButton').innerText;
-    var version = document.getElementById('versionDropdown').querySelector('.selected').id;
+  function hideVersionOptions() {
+    var productDropdown = document.getElementById('versionDropdown');
+    productDropdown.style.display = 'none';
+  }
 
-    if (product && version) {
-      var url = 'localhost:1313/' + product + '/' + version;
+
+  function goToSelectedUrl() {
+    var selectedOption = document.querySelector('.truenas-dropdown-item.selected');
+    var selectedProductId = selectedOption ? selectedOption.dataset.id : null; // Get the selected product ID from the data-id attribute of the selected option
+
+    var version = document.getElementById('versionDropdown').querySelector('.selected');
+
+    var goButton = document.querySelector('.docs-load-button');
+
+    if (selectedProductId) {
+      var url = '/' + selectedProductId; // Construct the relative URL with the selected product ID
+      if (version) {
+        url += '/' + version.dataset.id; // Add the version ID to the URL if a version is selected
+      }
       window.location.href = url;
+      goButton.disabled = true; // Disable the Go button after navigating to the URL
+    } else {
+      goButton.disabled = true; // Disable the Go button if no product is selected
     }
   }
 </script>
