@@ -11,20 +11,7 @@
         <a href="https://www.vendop.com/vendor/ixsystems-inc/reviews/" target="_blank" title="iXsystems VendOp Reviews"style="padding-right:.5rem"><img class="ubermenu-image ubermenu-image-size-full" src='/favicon/VendOp_Icon_15x15px.png' width="15" height="15" alt="VendOp_Icon_15x15px"></a>
         <a href="https://www.truenas.com/commercial-support/" target="_blank" title="iXsystems TrueNAS Enterprise Support">Commercial Support</a>
 	</div>
-	
-	
   <div class="container linksrow" style="padding-top:.5rem">
-    {{ if .MenuEnabled }}
-      <label for="menu-control" class="gdoc-nav__control" tabindex="0" style="padding-right:1rem">
-        <svg class="gdoc-icon gdoc_menu">
-          <title>{{ i18n "button_nav_open" }}</title>
-          <use xlink:href="#gdoc_menu"></use>
-        </svg>
-        <svg class="gdoc-icon gdoc_arrow_back">
-          <title>{{ i18n "button_nav_close" }}</title>
-          <use xlink:href="#gdoc_arrow_back"></use>
-        </svg>
-      </label>
 		<div class="truenas-mediamenu">
             <button class="truenas-menubutton"><img src="/favicon/TN-favicon-32x32.png"> TrueNAS Directory <i class="fa fa-angle-down"></i></button>
             <div class="truenas-menudropdown">
@@ -38,7 +25,6 @@
                 <a href="https://www.truenas.com/download-truenas-core/">Download</a>
             </div>
         </div>
-    {{ end }}
 	    <div class="container truerow">
 			<a class="gdoc-brand gdoc-header__link" href="https://www.truenas.com">
 				<span class="flex align-center">
@@ -141,45 +127,21 @@
                 </div>
 			</div>
 		</div>
-	
-    <div class="gdoc-menu-header">
-      <span class="gdoc-menu-header__items">
-        {{ if .Root.Site.Data.menu.extra.header }}
-          {{ partial "menu-extra" (dict "current" .Root "source" .Root.Site.Data.menu.extra.header "target" "header") }}
-        {{ end }}
-
-        <span class="gdoc-menu-header__home">
-          <a href="{{ .Root.Site.BaseURL }}" class="gdoc-header__link">
-            <svg class="gdoc-icon gdoc_home">
-              <title>{{ i18n "button_homepage" }}</title>
-              <use xlink:href="#gdoc_home"></use>
-            </svg>
-          </a>
-        </span>
-
-        {{ partial "language" .Root }}
-
-
-        <span class="gdoc-menu-header__control">
-          <label for="menu-header-control">
-            <svg class="gdoc-icon gdoc_keyboard_arrow_right">
-              <use xlink:href="#gdoc_keyboard_arrow_right"></use>
-              <title>{{ i18n "button_menu_close" }}</title>
-            </svg>
-          </label>
-        </span>
-      </span>
-      <label for="menu-header-control" class="gdoc-menu-header__control">
-        <svg class="gdoc-icon gdoc_keyboard_arrow_left">
-          <use xlink:href="#gdoc_keyboard_arrow_left"></use>
-          <title>{{ i18n "button_menu_open" }}</title>
-        </svg>
-      </label>
-    </div>
-  </div>
 </header>
 <nav>
 {{ partial "docs-nav" }}
+{{ if .MenuEnabled }}
+<label for="menu-control" class="gdoc-nav__control" tabindex="0" style="padding:0 1rem 0 1rem;">
+	<svg class="gdoc-icon gdoc_menu">
+		<title>{{ i18n "button_nav_open" }}</title>
+		<use xlink:href="#gdoc_menu"></use>
+	</svg>
+	<svg class="gdoc-icon gdoc_arrow_back">
+	<title>{{ i18n "button_nav_close" }}</title>
+	<use xlink:href="#gdoc_arrow_back"></use>
+	</svg>
+</label>
+{{ end }}
 </nav>
 <!-- Make stickymenu stay on the top of the page when the user scrolls -->
 <script>

@@ -16,7 +16,7 @@ p,h1,h2,h3,h4,th,td,a,body {
     max-width: 85%;
     margin-left: auto;
     margin-right: auto;
-    padding: 1rem 1rem 0rem 0rem;
+    padding: 1rem 2rem 0rem 0rem;
 }
 /* Site header */
 .gdoc-brand__img {
@@ -151,10 +151,19 @@ p,h1,h2,h3,h4,th,td,a,body {
 .menubar-link {
 	padding-right: 1.5rem;
 }
-
+@media screen and (max-width:800px) {
+	.docshome {
+		text-align: center;
+	}
+	#gdoc-color-theme {
+		flex:1;		
+	}
+	.google_translate_element {
+	}
+}
 /* Remove stickybar for small screens and use default GeekDoc menu */
-@media screen and (max-width:46.5rem) {
-    .stickyelement {
+@media screen and (max-width:46rem) {
+    .container.truerow {
         display: none;
     }
 }
@@ -167,6 +176,9 @@ p,h1,h2,h3,h4,th,td,a,body {
 	align-items:center;
 	width: 85%;
 	margin: 0 auto;
+}
+.docsnav span, .docsnav div {
+	margin-right: 10px;
 }
 .truenas-docsnav-menubutton {
     background-color: white;
@@ -397,10 +409,11 @@ p,h1,h2,h3,h4,th,td,a,body {
         padding: 0px 15px 15px 0px;
     }
     .truenas-mediamenu:hover .truenas-menudropdown {display: block;}
-    .truenas-mediamenu:hover .truenas-menubutton {background-color: #ffffff;color:#31beec;}
-    .gdoc-nav__control {
-        display: inline-block;
-    }
+    .truenas-mediamenu:hover .truenas-menubutton {background-color: black;color:white;}
+}
+svg.gdoc-icon {
+	width: 1.5rem;
+	height: 1.5rem;
 }
 /* End site directory for mobile browsing */
 /* Style Hint Boxes */
