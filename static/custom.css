@@ -61,7 +61,7 @@ p,h1,h2,h3,h4,th,td,a,body {
 	height: 2rem;
 	font-weight: bold;
 	border: 0px;
-	margin-left:13px;
+	margin: 0 13px 0 13px;
 }
 .docs-load-button[disabled] {
 	background: #23afe4;
@@ -176,9 +176,6 @@ p,h1,h2,h3,h4,th,td,a,body {
 	align-items:center;
 	width: 85%;
 	margin: 0 auto;
-}
-.docsnav span, .docsnav div {
-	margin-right: 10px;
 }
 .truenas-docsnav-menubutton {
     background-color: white;
