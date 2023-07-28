@@ -19,7 +19,12 @@ function init() {
     loadScript('{{ index .Site.Data.assets "js/groupBy.min.js" | relURL }}');
     loadScript('{{ index .Site.Data.assets "js/flexsearch.min.js" | relURL }}', function() {
       const indexCfgDefaults = {
-        tokenize: 'forward'
+        tokenize: 'forward',
+        context: { 
+          resolution: 5,
+          depth: 3,
+          bidirectional: true
+        }
       }
       const indexCfg = {{ with .Scratch.Get "geekdocSearchConfig" }}{{ . | jsonify }}{{ else }}indexCfgDefaults{{ end }};
       const dataUrl = '/docs{{ $searchData.RelPermalink }}'
@@ -33,6 +38,13 @@ function init() {
       const index = new FlexSearch.Document(indexCfg);
       window.geekdocSearchIndex = index;
 
+      function search() {
+        const searchCfg = {
+          enrich: true,
+          limit: 10,
+          fuzzy: 2
+        };
+        
       getJson(dataUrl, function(data) {
         data.forEach(obj => {
           window.geekdocSearchIndex.add(obj);
@@ -41,11 +53,6 @@ function init() {
     });
   }
 
-  function search() {
-    const searchCfg = {
-      enrich: true,
-      limit: 10
-    };
 
     while (results.firstChild) {
       results.removeChild(results.firstChild);

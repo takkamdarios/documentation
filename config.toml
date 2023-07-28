@@ -50,6 +50,7 @@ id = "UA-2174408-20"
 [params.ui.readingtime]
 enable = true
 
+aliases = ['scale-next/', 'https://www.truenas.com/docs/']
 [params]
 
   # (Optional, default 6) Set how many table of contents levels to be showed on page.

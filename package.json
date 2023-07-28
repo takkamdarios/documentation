@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/bep/tech-doc-hugo#readme",
   "dependencies": {
+    "flexsearch": "^0.7.31",
     "material-design-icons": "^3.0.1"
   },
   "devDependencies": {
