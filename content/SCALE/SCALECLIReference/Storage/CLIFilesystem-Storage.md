@@ -31,6 +31,21 @@ You can enter commands from the main CLI prompt or from the **dataset** namespac
 
 ### Get Command
 
+This is content from the smtp article and will need to be rewritten for this one, but is an example use case for `get`:
+
+To read the MIB file, download a copy to a shared dataset. Enter <code>storage filesystem get path="/usr/local/share/snmp/mibs/<em>FILENAME.ext</em>" > <em>PATH</em>/<em>FILENAME.ext</em></code>, where *FILENAME.ext* is the MIB file and *PATH* is the path to a dataset with a share configured (SMB, NFD, or iSCSI). For more information, see [`storage filesystem get`]({{< relref "CLIFilesystem-Storage.md #get-command" >}}).
+
+{{< expand "Command Example" "v" >}}
+```
+storage filesystem get path="/usr/local/share/snmp/mibs/TRUENAS-MIB.txt" > /mnt/tank/test/TRUENAS-MIB.txt
+[0%] ...
+[100%] ...
+[100%] Job output (0 bytes) saved at '/mnt/tank/test/TRUENAS-MIB.txt'
+```
+{{< /expand >}}
+
+Log in to the share to access the copy.
+
 ```
 storage filesystem get path="/mnt/tank/files"
 Please, specify the output file name using ' > filename.ext'
