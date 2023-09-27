@@ -54,5 +54,6 @@ jobs:
 
       - name: Build Hugo Site
         run: hugo -d public --gc --minify
+        
 
 
