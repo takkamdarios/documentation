@@ -1,0 +1,9 @@
+<!-- User-defined parameters transform into an html link with specific styling.
+     This is intended for CLI documentation.
+	 Parameters:
+	 - link : the url and anchor tag to the command being described.
+	 - desc : descriptors added to the link hover text.
+	 - name : command name to be linkified.
+-->
+
+<a class="cli-cmd" href="{{ .Get "link" }}" title="{{ .Get "desc" }}">{{ .Get "name" }}</a>

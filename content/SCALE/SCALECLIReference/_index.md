@@ -14,6 +14,11 @@ aliases:
  - /scale/scaleclireference/sharing/cliwebdav/
 ---
 
+<!-- Experimental CLI descriptor element -->
+{{< cmd-desc name="ls" link="www.google.com" desc="Lists options in a namespace." >}}
+<!-- end experiment -->
+
+
 {{< toc >}}
 
 {{< include file="/_includes/CLI/CLIGuideWIP.md" >}}
