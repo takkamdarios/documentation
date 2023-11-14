@@ -1,6 +1,6 @@
 ---
 title: "Users and Teams"
-description: "Describes the Users and Teams screens and has usage notes for administering TrueCommand user accounts."
+description: "Describes the Users and Teams screens and provides information on administering TrueCommand user accounts, groups, and teams."
 weight: 20
 aliases:
  - /truecommand/administration/users/
@@ -16,47 +16,60 @@ Alternately, LDAP can automatically create new user accounts when someone logs i
 
 You can also manage many user accounts simultaneously by organizing them into Teams.
 
-## Adding Local User Accounts
+## Adding TrueCommand User Accounts
 
-To create a new user account, open the **Configure** <i class="material-icons" aria-hidden="true" title="Settings">settings</i> menu and click **Users > + NEW USER**.
-Assign them a descriptive name and authentication method.
-
-TrueCommand uses the default authentication method to create unique credentials for logging in to the web interface.
-User names and passwords are case-sensitive.
-The administrator must provide the user with their login credentials.
+To create a new TrueCommand user account, click the gear <i class="material-icons" aria-hidden="true" title="Settings">settings</i> icon to open the settings dropdown menu, then click **Users** to open the **Users** screen. 
+Click **NEW USER** to open the **New User** screen.
 
 ![UsersAdd](/images/TrueCommand/Users/UsersNewUser.png "Adding a new user")
 
-You can assign users to existing teams. After creating the team, you can add the user in the **New User** configuration panel by selecting **Teams** on the drop-down menu.
+A user can be a person, location, department, or whatever you choose. Enter a descriptive name in **Username**. 
+You can also enter a full name for the user but this is not required. 
+For example, if adding a person enter *john smith* or if adding a department enter *auditing*.
+Enter a password for the user account. 
+User names and passwords are case-sensitive.
+
+TrueCommand uses the default authentication method to create unique credentials for logging in to the web interface.
+The administrator must provide the user with their login credentials.
+
+If already created, you can assign the new user to a team. Click the **Teams** down arrow and select a team from the dropdown list. 
+If not created, you can go to **Teams** to create the team, then return to the **Users** screen and edit the user, or you can add the user when you create the team.
 You can assign users to multiple teams.
 
-If the user needs to be an administrator, check the **TrueCommand Administrator** box.
+If creating an administrator user, select **TrueCommand Administrator**.
 
-When finished, click **Create User**.
+Click **Create User**. The new user is added to the list of users on the **Users** screen. 
 
-## Configuring User Accounts
+![UsersList](/images/TrueCommand/Users/UsersList.png "Users Screen")
 
-To configure account details and permissions, open the **Configure** <i class="material-icons" aria-hidden="true" title="Settings">settings</i> menu and click **Users**.
+## Editing TrueCommand User Accounts
 
-![UsersList](/images/TrueCommand/Users/UsersList.png "List of Users")
+To edit TrueCommand user account details, click the gear <i class="material-icons" aria-hidden="true" title="Settings">settings</i> icon to open the settings dropdown menu, then click **Users**.
+Locate the user on the list, then click on the edit <i class="material-icons" aria-hidden="true" title="Configure">edit</i> icon.
+If the user is a non-administrator, the screen opens with options to add the user to groups, teams, and to add systems the user needs access to.
 
-To edit a user, click the edit icon <i class="material-icons" aria-hidden="true" title="Configure">edit</i>.
+![EditNonAdministratorUserScreen](/images/TrueCommand/Users/EditNonAdministratorUserScreen.png "Edit Non-Administrator User Screen")
 
-![Users Edit](/images/TrueCommand/Users/UsersEditUser21.png "Users Edit")
+Administrator users do not include the option to add teams, system access, or system groups from the edit user screen.
 
-There are several different user elements that you can configure, including their avatar, personal details, contact email address, team membership, and system permissions.
+You can configure several different user elements, including the avatar, user personal details, contact email address, team or group membership, and system access permissions. 
+Select **TrueCommand Administrator** to make the user an administrator account.
+To change the user password, enter and confirm the new password.
 
-### User Details
+Click **SAVE CHANGES** after completing changes to the user.
 
-Users or admins can add personal details about the user on this page. 
+## User Details (Profile) Screen 
+Users can view details about their account by clicking on the avatar menu, then clicking on **Profile**. This opens the same user details screen as clicking on the edit icon for a user on the **Users** screen.
+Administrator users can go to the **Users** screen, then click on the edit icon for the user to open the user details screen for the user. 
+Non-administrator users do no have access to the **Users** screen.
 
-To revert to the original field contents, click **RESET FORM** before you click **SAVE CHANGES**.
+To discard any changes and revert to the original field contents, click **RESET FORM** before you click **SAVE CHANGES**.
 
 {{< truetable >}}
 | Setting | Description |
 |---------|-------------|
 | **Username** | Enter or change the username. |
-| **Full Name** | Enter or change the user full name. |
+| **Full Name** | Enter or change the user full name. If not a person, enter the full name of the location, department, etc. for the user. |
 | **Title** | Enter or change the user title. |
 | **Email** | Enter or change the user email. If [SMTP]({{< relref "AlertManage.md" >}}) is not set up, an error message displays at the bottom of the screen stating **Failed to send email. Are your SMTP settings configured?**. Admins can click the **CONFIGURE** button to open the SMTP settings window. Before adding a user email, go to **Alert Services** and verify you have set up the SMTP service. |
 | **Phone** | Enter or change the user phone number. |
@@ -66,31 +79,32 @@ To revert to the original field contents, click **RESET FORM** before you click 
 | **Password Confirm** | Confirms new user password. |
 {{< /truetable >}}
 
-### Joined Teams
-
-The **CREATE A NEW TEAM** button displays if a TrueCommand team does not exist.
+### Managing Team Membership
+The **CREATE A NEW TEAM** button displays in the **Join Teams** area of the user details screen if a TrueCommand team does not exist.
 When teams exist, the **JOIN TEAM** button displays instead.
 
-Click **JOIN TEAM** to display the list of existing teams, then select a team to add the user to it.
-You can add users to multiple teams.
+Click **JOIN TEAM** to display the list of existing teams, then select a team to add to the user.
+Users can be members of multiple teams.
 TrueCommand applies team permissions to any user added to a team, but setting specific permissions for users can override related team permissions.
 Use the **Teams** screen to create new teams or edit existing ones.
 
-### System Access
+### Managing System and Group Access
+To limit non-administrative account access to connected systems, administrators can add the system(s) and group(s) on the user details screen.
+The user details screen allows administrators to select an existing group with the **ADD GROUP** or system with the **ADD SYSTEM** buttons.
 
-To limit non-administrative account access to connected systems, configure the **System Access** and **System Groups** sections.
-You must first configure [system connections]({{< relref "ConnectingTrueNAS.md" >}}) and/or [system groups]({{< relref "ConnectingTrueNAS.md" >}}) in TrueCommand. Add systems from either the **Dashboard** or **Systems** screens.
+Administrators must first add the system connections and/or system groups. For more information see [Connecting the First TrueNAS System]]({{< relref "ConnectingTrueNAS.md" >}}). 
+Add systems from the main **Dashboard**, **Fleet Dashboard**, or the **Systems** screens.
 
 {{< include file="content/_includes/TCPermissionsHierarchy.md" >}}
 
-Click **ADD SYSTEM** and select a system from the drop-down to give the user access to that system.
-To restrict them to viewing system details, select the **read** permission.
-To remove their access to a particular system, click **-** minus on that system.
+To add user system access, on the user details screen, click **ADD SYSTEM**, then select a system from the dropdown list. The system name displays in the **System Access** area. 
+To restrict access to only viewing system details, select the **read**  on the **Permission** dropdown list.
+To remove their access to a particular system, click the delete icon to remove the system. 
 
-When TrueCommand has system groups, the **ADD GROUP** button displays.
-Click **ADD GROUP** and select a group from the drop-down to give the user access to all the systems in that group.
-To choose the user group permissions, select **read** or **read/write**.
-To remove their access to a particular system group, click **-** (minus) on that group.
+If TrueCommand has system groups, the **ADD GROUP** button displays.
+To add the user to an existing group, click **ADD GROUP**, then select the group from the dropdown list. A group user member has access to all the systems in that group.
+To choose the user group permissions, select **read** or **read/write** from the **Permissions** dropdown list.
+To remove their access to a particular system group, click the delete icon for the group.
 
 ## Resetting a User Password at Login
 
@@ -105,51 +119,48 @@ Open the **Shell** on the TrueNAS system running the TrueCommand container and u
 docker exec -it [docker instance ID] resetpw [username]
 ```
 
-## Deleting User Accounts
-
-To delete an account, open the **Configure** <i class="material-icons" aria-hidden="true" title="Settings">settings</i> menu and click **Users**.
-On the **Users** page, click the delete icon <i class="material-icons" aria-hidden="true" title="Delete">delete</i> to the right of the user you want to delete.
-A popup displays to confirm user deletion.
+## Deleting TrueCommand User Accounts
+To delete an account, click the gear <i class="material-icons" aria-hidden="true" title="Settings">settings</i> icon to open the settings dropdown menu, then click **Users**.
+On the **Users** screen, click the delete icon <i class="material-icons" aria-hidden="true" title="Delete">delete</i> to the right of the user you want to delete.
+A confirmation dialog opens to confirm user deletion.
 
 ![Users Delete](/images/TrueCommand/Users/UsersDeleteUser.png "Users Delete")
 
-## Organizing Users into Teams
-
-To create a team, open the **Configure** <i class="material-icons" aria-hidden="true" title="Settings">settings</i> menu and click **Teams**.
+## Managing Teams
+To create a team, click the gear <i class="material-icons" aria-hidden="true" title="Settings">settings</i> icon to open the settings dropdown menu, then click **Teams**.
+The **Teams** screen displays a list of existing teams created in TrueCommand.
 
 ![TeamsList](/images/TrueCommand/Teams/TeamsList.png "Teams List")
 
-Clicking **NEW TEAM** displays the **New Team** configuration panel.
+Clicking **NEW TEAM** to open the **New Team** screen.
 
 ![TeamsAdd](/images/TrueCommand/Teams/TeamsNewTeam.png "Teams: Add")
 
-Type a name and select an avatar for the new team.
+Enter a name and select an avatar for the new team.
 You can edit team permissions and settings after creating it.
 
-### Configuring Teams
-
-To configure a team, click on the **Configure** <i class="material-icons" aria-hidden="true" title="Settings">settings</i> icon and then click **Teams**. 
-To change team members or permissions, click on the edit icon <i class="material-icons" aria-hidden="true" title="Configure">edit</i> for the team you selected on the list. 
+### Editing Teams
+To edit a team, click the gear <i class="material-icons" aria-hidden="true" title="Settings">settings</i> icon to open the settings dropdown menu, then click **Teams**.
+Click on the edit icon for the team to open the team details screen. 
 
 ![Teams Edit](/images/TrueCommand/Teams/TeamsEdit.png "Teams Edit")
 
-You can change a team profile avatar or name or grant team members permission to create new TrueCommand alert rules by selecting **Enable alert creation**.
+You can change a team profile avatar, name, add new team members, add existing systems and groups to a team, or grant team members permission to create new TrueCommand alert rules by selecting **Enable alert creation**.
 
-The **Members** section shows which accounts are in the team.
-To add users to the team, click **ADD USER** and select users on the dropdown list.
-To remove users from the team, click the **-** (minus) next to the users you want to remove.
+To change team members, click on the edit icon <i class="material-icons" aria-hidden="true" title="Configure">edit</i> for the team you selected on the list. 
+Click **ADD USER** in the **Members** section to add new users to the team. Members of the team display in this area.
+To remove users from the team, click the delete icon next to the user(s) you want to remove.
 
 You can configure system permissions the same way as individual user system access.
 Note that individual user account permissions can override team permissions.
 
-## Deleting Teams
-
-To delete account details and permissions, open the **Configure** <i class="material-icons" aria-hidden="true" title="Settings">settings</i> menu and click **Teams**.
-On the **Users** page, click the delete icon <i class="material-icons" aria-hidden="true" title="Delete">delete</i> to the right of the user you want to delete.
-A popup displays to confirm the team deletion.
+### Deleting Teams
+To delete account details and permissions, click the gear <i class="material-icons" aria-hidden="true" title="Settings">settings</i> icon to open the settings dropdown menu, then click **Teams**.
+On the **Teams** page, click the delete icon <i class="material-icons" aria-hidden="true" title="Delete">delete</i> to the right of the team you want to delete.
+A confirmation dialog opens to confirm the team deletion.
 
 ![Teams Delete](/images/TrueCommand/Teams/TeamsDeleteTeam.png "Teams Delete")
 
 {{< hint type=note >}}
-Deleting a team does not remove users or systems assigned to that team.
+Deleting a team does not remove users or systems assigned to that team from TrueCommand.
 {{< /hint >}}
