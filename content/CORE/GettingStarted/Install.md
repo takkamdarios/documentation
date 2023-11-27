@@ -165,6 +165,11 @@ Select <i>Fresh Install</i> to do a clean install of the downloaded version of T
 
 ![InstallFresh](/images/CORE/Install/InstallWarningScreen.png "Upgrade or Fresh Install Screen")
 
+
+
+![InstallPassword](/images/CORE/Install/InstallPasswordScreen.png "Install Password Screen")
+
+After following the steps to install, reboot the system and remove the install media.
 When the operating system device has enough additional space, you can choose to allocate some space for a swap partition to improve performance.
 
 ![InstallPartition](/images/CORE/Install/InstallPartitionScreen.png "Install Partition Screen")
@@ -172,10 +177,6 @@ When the operating system device has enough additional space, you can choose to 
 Next, set a password for the TrueNAS administrative account, named `root` by default.
 This account has full control over TrueNAS and is used to log in to the web interface.
 Set a strong password and protect it.
-
-![InstallPassword](/images/CORE/Install/InstallPasswordScreen.png "Install Password Screen")
-
-After following the steps to install, reboot the system and remove the install media.
 
 {{< expand "Troubleshooting" "v">}}
 If the system does not boot into TrueNAS, there are several things you can check to resolve the situation:
